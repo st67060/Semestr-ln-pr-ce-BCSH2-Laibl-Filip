@@ -8,16 +8,14 @@ namespace SemPrace
 {
     public class Knihovna
     {
-        public string Nazev { get; set; }
-        public int IdKnihovny { get; set; }
-        public string Lokalita { get; set; }
+        public string Nazev { get; }
+        public string Lokalita { get; }
         public List<Kniha> Knihy { get; set; }
         public List<Osoba> RegistrovaneOsoby { get; set; }
 
-        public Knihovna(string nazev, int idKnihovny, string lokalita)
+        public Knihovna(string nazev, string lokalita)
         {
             Nazev = nazev;
-            IdKnihovny = idKnihovny;
             Lokalita = lokalita;
             Knihy = new List<Kniha>();
             RegistrovaneOsoby = new List<Osoba>();
@@ -28,16 +26,16 @@ namespace SemPrace
             Knihy.Add(kniha);
         }
 
-        public void PridatOsoba(Osoba osoba)
+        public void PridatOsobu(Osoba osoba)
         {
             RegistrovaneOsoby.Add(osoba);
         }
     }
     public class Kniha
     {
-        public string Nazev { get; set; }
-        public string Autor { get; set; }
-        public int RokVydani { get; set; }
+        public string Nazev { get; }
+        public string Autor { get; }
+        public int RokVydani { get; }
         public bool Vypujceni { get; set; }
         public Osoba Vypujcil { get; set; }
         public DateTime DatumVypujceni { get; set; }
@@ -65,9 +63,30 @@ namespace SemPrace
             Autor = autor;
             RokVydani = rokVydani;
             Vypujceni = false;
-            DatumVypujceni = datumVypujceni;
             Vypujcil = null;
+            DatumVypujceni = datumVypujceni;          
             DatumNavraceni = datumNavraceni;
+        }
+        public void zadejVypujcku(Kniha kniha, Osoba osoba) {
+            if (kniha.Vypujceni)
+            {
+                throw new ArgumentException("Kniha: " + kniha.Nazev + " je aktuálně vypůjčena");
+            }
+            kniha.Vypujcil = osoba;
+            kniha.Vypujceni = true;
+            kniha.DatumVypujceni = DateTime.Today;
+            kniha.DatumNavraceni = DateTime.Today.AddDays(14);
+
+        }
+        public void odeberVypujcku(Kniha kniha) {
+            if (!kniha.Vypujceni)
+            {
+                throw new ArgumentException("Kniha: " + kniha.Nazev + " není aktuálně vypůjčena");
+            }
+            kniha.Vypujcil = null;
+            kniha.Vypujceni = false;
+            kniha.DatumVypujceni = DateTime.MinValue;
+            kniha.DatumNavraceni = DateTime.MinValue;
         }
     }
 
@@ -75,13 +94,22 @@ namespace SemPrace
     {
         public string Jmeno { get; set; }
         public string Prijmeni { get; set; }
-        public int Id { get; set; }
+        public string Id { get; set; }
 
-        public Osoba(string jmeno, string prijmeni, int id)
+        public Osoba(string jmeno, string prijmeni)
         {
             Jmeno = jmeno;
             Prijmeni = prijmeni;
-            Id = id;
+            Id = GenerateUserId();
+        }
+        public static string GenerateUserId()
+        {
+            Random random = new Random();
+            const string chars = "0123456789";
+            string userId = new string(Enumerable.Repeat(chars, 6).Select(s => s[random.Next(s.Length)]).ToArray());
+
+            return "User"+userId;
         }
     }
+    
 }
