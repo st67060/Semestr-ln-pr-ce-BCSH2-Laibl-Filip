@@ -4,33 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SemPrace
+namespace SemPrace.Classes
 {
-    public class Knihovna
-    {
-        public string Nazev { get; }
-        public string Lokalita { get; }
-        public List<Kniha> Knihy { get; set; }
-        public List<Osoba> RegistrovaneOsoby { get; set; }
-
-        public Knihovna(string nazev, string lokalita)
-        {
-            Nazev = nazev;
-            Lokalita = lokalita;
-            Knihy = new List<Kniha>();
-            RegistrovaneOsoby = new List<Osoba>();
-        }
-
-        public void PridatKniha(Kniha kniha)
-        {
-            Knihy.Add(kniha);
-        }
-
-        public void PridatOsobu(Osoba osoba)
-        {
-            RegistrovaneOsoby.Add(osoba);
-        }
-    }
     public class Kniha
     {
         public string Nazev { get; set; }
@@ -51,15 +26,18 @@ namespace SemPrace
             Vypujcil = null;
             DatumNavraceni = DateOnly.MinValue;
         }
-        public Kniha upravKnihu(string nazev, string autor, int rokVydani) {
+        //Metoda pro upravu parametru knihy
+        public Kniha upravKnihu(string nazev, string autor, int rokVydani)
+        {
             this.Nazev = nazev;
             this.Autor = autor;
             this.RokVydani = rokVydani;
             return this;
-            
-        }
 
-        public void zadejVypujcku( Osoba osoba) {
+        }
+        //Metoda pro zadání výpujčky, datum je vygenerovan
+        public void zadejVypujcku(Osoba osoba)
+        {
             if (this.Vypujceni)
             {
                 throw new ArgumentException("Kniha: " + this.Nazev + " je aktuálně vypůjčena");
@@ -71,7 +49,7 @@ namespace SemPrace
             osoba.HistorieVypujcenychKnih.Add(this);
 
         }
-        public void zadejVypujcku( Osoba osoba,DateOnly datumVypujceni, DateOnly datumVraceni)
+        public void zadejVypujcku(Osoba osoba, DateOnly datumVypujceni, DateOnly datumVraceni)
         {
             if (this.Vypujceni)
             {
@@ -84,7 +62,9 @@ namespace SemPrace
             osoba.HistorieVypujcenychKnih.Add(this);
 
         }
-        public void odeberVypujcku() {
+        //Metoda pro odebrání výpujčky z knihy
+        public void odeberVypujcku()
+        {
             if (!this.Vypujceni)
             {
                 throw new ArgumentException("Kniha: " + this.Nazev + " není aktuálně vypůjčena");
@@ -94,6 +74,7 @@ namespace SemPrace
             this.DatumVypujceni = DateOnly.MinValue;
             this.DatumNavraceni = DateOnly.MinValue;
         }
+        //Metoda pro prodluzovani casu vypujcky, vzdy posune datum o 14 dni
         public void prodluzVypujcku()
         {
             if (this.Vypujceni)
@@ -104,31 +85,4 @@ namespace SemPrace
 
         }
     }
-    
-
-    public class Osoba
-    {
-        public string Jmeno { get; }
-        public string Prijmeni { get; }
-        public string Id { get; }
-
-        public List<Kniha> HistorieVypujcenychKnih { get; }
-
-        public Osoba(string jmeno, string prijmeni, Knihovna knihovna)
-        {
-            Jmeno = jmeno;
-            Prijmeni = prijmeni;
-            Id = GenerateUserId();
-            knihovna.PridatOsobu(this);
-        }
-        public static string GenerateUserId()
-        {
-            Random random = new Random();
-            const string chars = "0123456789";
-            string userId = new string(Enumerable.Repeat(chars, 6).Select(s => s[random.Next(s.Length)]).ToArray());
-
-            return "User"+userId;
-        }
-    }
-    
 }

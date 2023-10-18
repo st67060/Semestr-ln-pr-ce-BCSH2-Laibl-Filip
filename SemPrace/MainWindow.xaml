@@ -6,17 +6,5 @@
         xmlns:local="clr-namespace:SemPrace"
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="1200">
-    <Grid Margin="0,0,0,-16" RenderTransformOrigin="0.523,0.531" HorizontalAlignment="Center" Width="1200">
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,276,10">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <ToolBar HorizontalAlignment="Left" Height="640" Margin="929,0,0,0" VerticalAlignment="Top" Width="271">
-            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Height="37" Width="160"/>
-        </ToolBar>
-    </Grid>
+    <Grid Margin="0,0,0,-16" RenderTransformOrigin="0.523,0.531" HorizontalAlignment="Center" Width="1200"/>
 </Window>
