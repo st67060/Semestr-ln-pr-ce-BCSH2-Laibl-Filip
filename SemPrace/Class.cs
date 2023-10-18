@@ -33,13 +33,13 @@ namespace SemPrace
     }
     public class Kniha
     {
-        public string Nazev { get; }
-        public string Autor { get; }
-        public int RokVydani { get; }
+        public string Nazev { get; set; }
+        public string Autor { get; set; }
+        public int RokVydani { get; set; }
         public bool Vypujceni { get; set; }
         public Osoba Vypujcil { get; set; }
-        public DateTime DatumVypujceni { get; set; }
-        public DateTime DatumNavraceni { get; set; }
+        public DateOnly DatumVypujceni { get; set; }
+        public DateOnly DatumNavraceni { get; set; }
 
         public Kniha(string nazev, string autor, int rokVydani)
         {
@@ -47,60 +47,79 @@ namespace SemPrace
             Autor = autor;
             RokVydani = rokVydani;
             Vypujceni = false;
-            DatumVypujceni = DateTime.MinValue;
+            DatumVypujceni = DateOnly.MinValue;
             Vypujcil = null;
-            DatumNavraceni = DateTime.MinValue;
+            DatumNavraceni = DateOnly.MinValue;
+        }
+        public Kniha upravKnihu(string nazev, string autor, int rokVydani) {
+            this.Nazev = nazev;
+            this.Autor = autor;
+            this.RokVydani = rokVydani;
+            return this;
+            
         }
 
-        public Kniha(string nazev, string autor, int rokVydani, DateTime datumVypujceni, DateTime datumNavraceni)
+        public void zadejVypujcku( Osoba osoba) {
+            if (this.Vypujceni)
+            {
+                throw new ArgumentException("Kniha: " + this.Nazev + " je aktuálně vypůjčena");
+            }
+            this.Vypujcil = osoba;
+            this.Vypujceni = true;
+            this.DatumVypujceni = DateOnly.FromDateTime(DateTime.Today);
+            this.DatumNavraceni = DateOnly.FromDateTime(DateTime.Today.AddDays(14));
+            osoba.HistorieVypujcenychKnih.Add(this);
+
+        }
+        public void zadejVypujcku( Osoba osoba,DateOnly datumVypujceni, DateOnly datumVraceni)
         {
-            if (datumNavraceni < datumVypujceni)
+            if (this.Vypujceni)
             {
-                throw new ArgumentException("Datum vrácení nemůže být kratší než datum výpůjčky.");
+                throw new ArgumentException("Kniha: " + this.Nazev + " je aktuálně vypůjčena");
             }
-
-            Nazev = nazev;
-            Autor = autor;
-            RokVydani = rokVydani;
-            Vypujceni = false;
-            Vypujcil = null;
-            DatumVypujceni = datumVypujceni;          
-            DatumNavraceni = datumNavraceni;
-        }
-        public void zadejVypujcku(Kniha kniha, Osoba osoba) {
-            if (kniha.Vypujceni)
-            {
-                throw new ArgumentException("Kniha: " + kniha.Nazev + " je aktuálně vypůjčena");
-            }
-            kniha.Vypujcil = osoba;
-            kniha.Vypujceni = true;
-            kniha.DatumVypujceni = DateTime.Today;
-            kniha.DatumNavraceni = DateTime.Today.AddDays(14);
+            this.Vypujcil = osoba;
+            this.Vypujceni = true;
+            this.DatumVypujceni = datumVypujceni;
+            this.DatumNavraceni = datumVraceni;
+            osoba.HistorieVypujcenychKnih.Add(this);
 
         }
-        public void odeberVypujcku(Kniha kniha) {
-            if (!kniha.Vypujceni)
+        public void odeberVypujcku() {
+            if (!this.Vypujceni)
             {
-                throw new ArgumentException("Kniha: " + kniha.Nazev + " není aktuálně vypůjčena");
+                throw new ArgumentException("Kniha: " + this.Nazev + " není aktuálně vypůjčena");
             }
-            kniha.Vypujcil = null;
-            kniha.Vypujceni = false;
-            kniha.DatumVypujceni = DateTime.MinValue;
-            kniha.DatumNavraceni = DateTime.MinValue;
+            this.Vypujcil = null;
+            this.Vypujceni = false;
+            this.DatumVypujceni = DateOnly.MinValue;
+            this.DatumNavraceni = DateOnly.MinValue;
+        }
+        public void prodluzVypujcku()
+        {
+            if (this.Vypujceni)
+            {
+                throw new ArgumentException("Kniha: " + this.Nazev + " není aktuálně vypůjčena");
+            }
+            this.DatumNavraceni = this.DatumNavraceni.AddDays(14);
+
         }
     }
+    
 
     public class Osoba
     {
-        public string Jmeno { get; set; }
-        public string Prijmeni { get; set; }
-        public string Id { get; set; }
+        public string Jmeno { get; }
+        public string Prijmeni { get; }
+        public string Id { get; }
 
-        public Osoba(string jmeno, string prijmeni)
+        public List<Kniha> HistorieVypujcenychKnih { get; }
+
+        public Osoba(string jmeno, string prijmeni, Knihovna knihovna)
         {
             Jmeno = jmeno;
             Prijmeni = prijmeni;
             Id = GenerateUserId();
+            knihovna.PridatOsobu(this);
         }
         public static string GenerateUserId()
         {
