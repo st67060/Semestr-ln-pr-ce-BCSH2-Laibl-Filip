@@ -154,11 +154,12 @@ namespace SemPrace.Classes
             this.Vypujceni = false;
             this.DatumVypujceni = DateOnly.MinValue;
             this.DatumNavraceni = DateOnly.MinValue;
+
         }
         //Metoda pro prodluzovani casu vypujcky, vzdy posune datum o 14 dni
         public void prodluzVypujcku()
         {
-            if (this.Vypujceni)
+            if (!this.Vypujceni)
             {
                 throw new ArgumentException("Kniha: " + this.Nazev + " není aktuálně vypůjčena");
             }
