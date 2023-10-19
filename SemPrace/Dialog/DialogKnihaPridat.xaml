@@ -1,0 +1,26 @@
+﻿<Window x:Class="SemPrace.Dialog.DialogKnihaPridat"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Dialog pro vytvoření knihy" Height="278" Width="450">
+    <Grid x:Name="grid" Margin="0,0,0,-16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" MinHeight="45.96"/>
+            <RowDefinition Height="Auto" MinHeight="45.96"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Název:" Grid.Row="2" Margin="80,24,80,24"/>
+        <TextBox Name="NazevTextBox" Grid.Row="2" Margin="159,24,119,23" TextChanged="NazevTextBox_TextChanged"/>
+
+        <Label Content="Autor:" Grid.Row="3" Margin="77,5,139,14"/>
+        <TextBox Name="AutorTextBox" Grid.Row="3" Margin="159,61,119,-41" TextChanged="AutorTextBox_TextChanged"/>
+
+        <Label Content="Rok vydání:" Grid.Row="3" Margin="77,61,256,-41"/>
+        <TextBox Name="RokVydaniTextBox" Grid.Row="3" Margin="159,4,119,15" TextChanged="RokVydaniTextBox_TextChanged"/>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Width="0"/>
+        <Button Content="Potvrdit" x:Name="ConfirmButton" Margin="258,103,119,-87" Click="ConfirmButton_Click" Grid.Row="3"/>
+        <Button Content="Zrušit" x:Name="CancelButton" Click="CancelButton_Click" Margin="159,103,225,-87" Grid.Row="3"/>
+    </Grid>
+</Window>

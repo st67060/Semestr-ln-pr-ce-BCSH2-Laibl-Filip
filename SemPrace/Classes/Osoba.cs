@@ -1,26 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SemPrace.Classes
 {
-    public class Osoba
+    public class Osoba : INotifyPropertyChanged
     {
-        public string Jmeno { get; }
-        public string Prijmeni { get; }
+        private string jmeno;
+        private string prijmeni;
+        private ObservableCollection<Kniha> historieVypujcenychKnih;
+
+        public string Jmeno
+        {
+            get { return jmeno; }
+        }
+
+        public string Prijmeni
+        {
+            get { return prijmeni; }
+        }
+
         public string Id { get; }
 
-        public List<Kniha> HistorieVypujcenychKnih { get; }
-
-        public Osoba(string jmeno, string prijmeni, Knihovna knihovna)
+        public ObservableCollection<Kniha> HistorieVypujcenychKnih
         {
-            Jmeno = jmeno;
-            Prijmeni = prijmeni;
-            Id = GenerateUserId();
-            knihovna.PridatOsobu(this);
+            get { return historieVypujcenychKnih; }
+            set
+            {
+                if (historieVypujcenychKnih != value)
+                {
+                    historieVypujcenychKnih = value;
+                    OnPropertyChanged(nameof(HistorieVypujcenychKnih));
+                }
+            }
         }
+
+        public Osoba(string jmeno, string prijmeni)
+        {
+            this.jmeno = jmeno;
+            this.prijmeni = prijmeni;
+            Id = GenerateUserId();
+            HistorieVypujcenychKnih = new ObservableCollection<Kniha>();
+        }
+
         public static string GenerateUserId()
         {
             Random random = new Random();
@@ -28,6 +54,13 @@ namespace SemPrace.Classes
             string userId = new string(Enumerable.Repeat(chars, 6).Select(s => s[random.Next(s.Length)]).ToArray());
 
             return "User" + userId;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

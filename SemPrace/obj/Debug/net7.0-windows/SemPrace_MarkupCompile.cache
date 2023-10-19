@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\App.xaml
-11407045341
+61192848659
 
-6-2123492120
+111071518895
 198-200740077
-MainWindow.xaml;
+Dialog\DialogKnihaEdit.xaml;Dialog\DialogKnihaPridat.xaml;Dialog\DialogKnihovna.xaml;Dialog\DialogKnihovnaEdit.xaml;Dialog\DialogVypujckaPridat.xaml;MainWindow.xaml;
 
 False
 

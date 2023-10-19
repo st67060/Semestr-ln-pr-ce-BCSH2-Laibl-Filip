@@ -7,55 +7,80 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="1200">
     <Grid Margin="0,0,0,-16" RenderTransformOrigin="0.523,0.531" HorizontalAlignment="Center" Width="1200">
-        <ListView x:Name="listViewKniha" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="180,92,720,38" Width="300" Height="520" IsSynchronizedWithCurrentItem="False" Grid.Column="3">
+        <ListView x:Name="listViewKniha" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="229,92,671,38" Width="300" Height="520" IsSynchronizedWithCurrentItem="False">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="Název" DisplayMemberBinding="{Binding Nazev}" Width="85"/>
+                    <GridViewColumn Header="Autor" DisplayMemberBinding="{Binding Autor}" Width="90"/>
+                    <GridViewColumn Header="Rok" DisplayMemberBinding="{Binding RokVydani}" Width="60"/>
+                    <GridViewColumn Header="vypůjčena" Width="60">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Vypujceni}" Value="True">
+                                                    <Setter Property="Text" Value="Ano"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Vypujceni}" Value="False">
+                                                    <Setter Property="Text" Value="Ne"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="listViewOsoba" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="510,92,390,38" Width="300" Height="520">
+        <ListView x:Name="listViewOsoba" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="574,92,390,38" Height="520">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="Přijmení" DisplayMemberBinding="{Binding Prijmeni}" Width="75"/>
+                    <GridViewColumn Header="Jméno" DisplayMemberBinding="{Binding Jmeno}" Width="75"/>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="80"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="listViewKnihovna" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="30,92,1048,47" Width="120" Height="520">
+        <ListView x:Name="listViewKnihovna" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="31,92,998,38" Height="520" SelectionChanged="listViewKnihovna_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="Název" DisplayMemberBinding="{Binding Nazev}" Width="85"/>
+                    <GridViewColumn Header="Město" DisplayMemberBinding="{Binding Lokalita}" Width="85"/>
                 </GridView>
             </ListView.View>
         </ListView>
         <Label Content="Seznam Knih" HorizontalAlignment="Left" Margin="286,33,0,0" VerticalAlignment="Top"/>
         <Label Content="Seznam Knihoven" HorizontalAlignment="Left" Margin="39,61,0,0" VerticalAlignment="Top"/>
         <Label Content="Seznam Osob" HorizontalAlignment="Left" Margin="619,31,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="buttonPridatKnihovna" Content="Přidat" HorizontalAlignment="Left" Margin="940,60,0,0" VerticalAlignment="Top" Width="130"/>
+        <Button x:Name="buttonPridatKnihovna" Content="Přidat" HorizontalAlignment="Left" Margin="940,60,0,0" VerticalAlignment="Top" Width="130" Click="buttonPridatKnihovna_Click"/>
         <Separator HorizontalAlignment="Left" Margin="842,180,0,0" VerticalAlignment="Top" Height="24" Width="327"/>
         <Separator HorizontalAlignment="Left" Margin="842,388,0,0" VerticalAlignment="Top" Height="24" Width="327"/>
         <Label Content="Knihovna" HorizontalAlignment="Left" Margin="976,28,0,0" VerticalAlignment="Top"/>
         <Label Content="Kniha" HorizontalAlignment="Left" Margin="985,209,0,0" VerticalAlignment="Top"/>
         <Label Content="Osoba" HorizontalAlignment="Left" Margin="983,417,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="buttonUpravitKnihovna" Content="Upravit" HorizontalAlignment="Left" Margin="940,92,0,0" VerticalAlignment="Top" Width="130"/>
-        <Button x:Name="buttonOdebratKnihovna" Content="Odebrat" HorizontalAlignment="Left" Margin="940,125,0,0" VerticalAlignment="Top" Width="130"/>
-        <Button x:Name="buttonPridatKniha" Content="Přidat" HorizontalAlignment="Left" Margin="863,260,0,0" VerticalAlignment="Top" Width="130"/>
-        <Button x:Name="buttonUpravitKniha" Content="Upravit" HorizontalAlignment="Left" Margin="863,292,0,0" VerticalAlignment="Top" Width="130"/>
-        <Button x:Name="buttonOdebratKniha" Content="Odebrat" HorizontalAlignment="Left" Margin="863,325,0,0" VerticalAlignment="Top" Width="130"/>
+        <Button x:Name="buttonUpravitKnihovna" Content="Upravit" HorizontalAlignment="Left" Margin="940,92,0,0" VerticalAlignment="Top" Width="130" Click="buttonUpravitKnihovna_Click"/>
+        <Button x:Name="buttonOdebratKnihovna" Content="Odebrat" HorizontalAlignment="Left" Margin="940,125,0,0" VerticalAlignment="Top" Width="130" Click="buttonOdebratKnihovna_Click"/>
+        <Button x:Name="buttonPridatKniha" Content="Přidat" HorizontalAlignment="Left" Margin="863,260,0,0" VerticalAlignment="Top" Width="130" Click="buttonPridatKniha_Click"/>
+        <Button x:Name="buttonUpravitKniha" Content="Upravit" HorizontalAlignment="Left" Margin="863,292,0,0" VerticalAlignment="Top" Width="130" Click="buttonUpravitKniha_Click"/>
+        <Button x:Name="buttonOdebratKniha" Content="Odebrat" HorizontalAlignment="Left" Margin="863,325,0,0" VerticalAlignment="Top" Width="130" Click="buttonOdebratKniha_Click"/>
         <Button x:Name="buttonPridatOsoba" Content="Přidat" HorizontalAlignment="Left" Margin="875,468,0,0" VerticalAlignment="Top" Width="130"/>
         <Button x:Name="buttonUpravitOsoba" Content="Upravit" HorizontalAlignment="Left" Margin="875,500,0,0" VerticalAlignment="Top" Width="130"/>
         <Button x:Name="buttonOdebratOsoba" Content="Odebrat" HorizontalAlignment="Left" Margin="875,533,0,0" VerticalAlignment="Top" Width="130"/>
-        <Button x:Name="buttonPridatVyp" Content="Přiřadit Výpůjčku" HorizontalAlignment="Left" Margin="1024,260,0,0" VerticalAlignment="Top" Width="130"/>
-        <Button x:Name="buttonUpravVyp" Content="Upravit Výpujčku" HorizontalAlignment="Left" Margin="1024,292,0,0" VerticalAlignment="Top" Width="130"/>
-        <Button x:Name="buttonOdeberVyp" Content="Odebrat Výpujčku" HorizontalAlignment="Left" Margin="1024,325,0,0" VerticalAlignment="Top" Width="130"/>
+        <Button x:Name="buttonPridatVyp" Content="Přiřadit Výpůjčku" HorizontalAlignment="Left" Margin="1024,260,0,0" VerticalAlignment="Top" Width="130" Click="buttonPridatVyp_Click"/>
+        <Button x:Name="buttonUpravVyp" Content="Upravit Výpujčku" HorizontalAlignment="Left" Margin="1024,292,0,0" VerticalAlignment="Top" Width="130" Click="buttonUpravVyp_Click"/>
+        <Button x:Name="buttonOdeberVyp" Content="Odebrat Výpujčku" HorizontalAlignment="Left" Margin="1024,325,0,0" VerticalAlignment="Top" Width="130" Click="buttonOdeberVyp_Click"/>
         <Button x:Name="buttonZobrazVypKnihyOsoba" Content="Zobrazit vypůjčené Knihy" HorizontalAlignment="Left" Margin="1024,494,0,0" VerticalAlignment="Top" Width="145" Height="32"/>
         <ComboBox x:Name="comboBoxKniha" HorizontalAlignment="Left" Margin="398,35,0,0" VerticalAlignment="Top" Width="66"/>
         <ComboBox x:Name="comboBoxOsoba" HorizontalAlignment="Left" Margin="729,35,0,0" VerticalAlignment="Top" Width="68"/>
-        <TextBox HorizontalAlignment="Left" Margin="180,64,0,0" TextWrapping="Wrap" Text="Hledat Knihu" VerticalAlignment="Top" Width="300" Height="28"/>
-        <TextBox HorizontalAlignment="Left" Margin="510,64,0,0" TextWrapping="Wrap" Text="Hledat Osobu" VerticalAlignment="Top" Width="300" Height="28"/>
+        <TextBox HorizontalAlignment="Left" Margin="229,62,0,0" TextWrapping="Wrap" Text="Hledat Knihu" VerticalAlignment="Top" Width="300" Height="28"/>
+        <TextBox HorizontalAlignment="Left" Margin="574,64,0,0" TextWrapping="Wrap" Text="Hledat Osobu" VerticalAlignment="Top" Width="236" Height="28"/>
         <ToolBar HorizontalAlignment="Center" Height="31" VerticalAlignment="Top" Width="1200" RenderTransformOrigin="0.518,0.551">
-            <Button Content="Načti Data" Width="83" VerticalAlignment="Top"/>
-            <Button Content="Ulož data" Width="89" VerticalAlignment="Top"/>
+            <Button x:Name="buttonNactiData" Content="Načti Data" Width="83" VerticalAlignment="Top"/>
+            <Button x:Name="buttonULozData" Content="Ulož data" Width="89" VerticalAlignment="Top"/>
         </ToolBar>
     </Grid>
 </Window>

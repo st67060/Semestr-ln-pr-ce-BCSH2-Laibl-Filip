@@ -7,6 +7,38 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Dialog\DialogKnihaEdit.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Dialog\DialogKnihaPridat.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Dialog\DialogKnihovna.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Dialog\DialogKnihovnaEdit.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Dialog\DialogVypujckaPridat.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Dialog\DialogKnihaEdit.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dialog\DialogKnihaPridat.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dialog\DialogKnihovna.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dialog\DialogKnihovnaEdit.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dialog\DialogVypujckaPridat.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

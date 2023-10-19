@@ -1,24 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SemPrace.Classes
 {
-    public class Knihovna
+    public class Knihovna : INotifyPropertyChanged
     {
-        public string Nazev { get; }
-        public string Lokalita { get; }
-        public List<Kniha> Knihy { get; set; }
-        public List<Osoba> RegistrovaneOsoby { get; set; }
+        private string nazev;
+        public string Nazev
+        {
+            get { return nazev; }
+            set
+            {
+                if (nazev != value)
+                {
+                    nazev = value;
+                    OnPropertyChanged(nameof(Nazev));
+                }
+            }
+        }
+
+        private string lokalita;
+        public string Lokalita
+        {
+            get { return lokalita; }
+            set
+            {
+                if (lokalita != value)
+                {
+                    lokalita = value;
+                    OnPropertyChanged(nameof(Lokalita));
+                }
+            }
+        }
+        public ObservableCollection<Kniha> Knihy { get; }
+        public ObservableCollection<Osoba> RegistrovaneOsoby { get; }
 
         public Knihovna(string nazev, string lokalita)
         {
             Nazev = nazev;
             Lokalita = lokalita;
-            Knihy = new List<Kniha>();
-            RegistrovaneOsoby = new List<Osoba>();
+            Knihy = new ObservableCollection<Kniha>();
+            RegistrovaneOsoby = new ObservableCollection<Osoba>();
         }
 
         public void PridatKniha(Kniha kniha)
@@ -30,5 +57,16 @@ namespace SemPrace.Classes
         {
             RegistrovaneOsoby.Add(osoba);
         }
+        public override string ToString()
+        {
+            return Nazev +""+ Lokalita;
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
+    
 }

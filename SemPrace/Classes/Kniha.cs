@@ -1,20 +1,111 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SemPrace.Classes
 {
-    public class Kniha
+    public class Kniha : INotifyPropertyChanged
     {
-        public string Nazev { get; set; }
-        public string Autor { get; set; }
-        public int RokVydani { get; set; }
-        public bool Vypujceni { get; set; }
-        public Osoba Vypujcil { get; set; }
-        public DateOnly DatumVypujceni { get; set; }
-        public DateOnly DatumNavraceni { get; set; }
+        private string nazev;
+        private string autor;
+        private int rokVydani;
+        private bool vypujceni;
+        private DateOnly datumVypujceni;
+        private DateOnly datumNavraceni;
+        private Osoba vypujcil;
+        
+        public string Nazev
+        {
+            get { return nazev; }
+            set
+            {
+                if (nazev != value)
+                {
+                    nazev = value;
+                    OnPropertyChanged(nameof(Nazev));
+                }
+            }
+        }
+
+        public string Autor
+        {
+            get { return autor; }
+            set
+            {
+                if (autor != value)
+                {
+                    autor = value;
+                    OnPropertyChanged(nameof(Autor));
+                }
+            }
+        }
+
+        public int RokVydani
+        {
+            get { return rokVydani; }
+            set
+            {
+                if (rokVydani != value)
+                {
+                    rokVydani = value;
+                    OnPropertyChanged(nameof(RokVydani));
+                }
+            }
+        }
+
+        public bool Vypujceni
+        {
+            get { return vypujceni; }
+            set
+            {
+                if (vypujceni != value)
+                {
+                    vypujceni = value;
+                    OnPropertyChanged(nameof(Vypujceni));
+                }
+            }
+        }
+
+        public DateOnly DatumVypujceni
+        {
+            get { return datumVypujceni; }
+            set
+            {
+                if (datumVypujceni != value)
+                {
+                    datumVypujceni = value;
+                    OnPropertyChanged(nameof(DatumVypujceni));
+                }
+            }
+        }
+
+        public DateOnly DatumNavraceni
+        {
+            get { return datumNavraceni; }
+            set
+            {
+                if (datumNavraceni != value)
+                {
+                    datumNavraceni = value;
+                    OnPropertyChanged(nameof(DatumNavraceni));
+                }
+            }
+        }
+        public Osoba Vypujcil
+        {
+            get { return vypujcil; }
+            set
+            {
+                if (vypujcil != value)
+                {
+                    vypujcil = value;
+                    OnPropertyChanged(nameof(vypujcil));
+                }
+            }
+        }
 
         public Kniha(string nazev, string autor, int rokVydani)
         {
@@ -23,17 +114,7 @@ namespace SemPrace.Classes
             RokVydani = rokVydani;
             Vypujceni = false;
             DatumVypujceni = DateOnly.MinValue;
-            Vypujcil = null;
             DatumNavraceni = DateOnly.MinValue;
-        }
-        //Metoda pro upravu parametru knihy
-        public Kniha upravKnihu(string nazev, string autor, int rokVydani)
-        {
-            this.Nazev = nazev;
-            this.Autor = autor;
-            this.RokVydani = rokVydani;
-            return this;
-
         }
         //Metoda pro zadání výpujčky, datum je vygenerovan
         public void zadejVypujcku(Osoba osoba)
@@ -83,6 +164,17 @@ namespace SemPrace.Classes
             }
             this.DatumNavraceni = this.DatumNavraceni.AddDays(14);
 
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public override string ToString()
+        {
+            return Nazev + " " + Autor + " " + RokVydani + " " + (Vypujceni ? "ANO" : "NE");
         }
     }
 }

@@ -1,0 +1,26 @@
+﻿<Window x:Class="SemPrace.Dialog.DialogKnihovnaEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Vstupní Dialog" Height="200" Width="300">
+    <Grid x:Name="grid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="32*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Název:" Margin="46,0,92,18" Grid.RowSpan="2" Grid.Column="1"/>
+        <TextBox Grid.Row="1" Name="NameTextBox" Width="200" Margin="50,5,50,41" Grid.RowSpan="3" Grid.ColumnSpan="2" TextChanged="NameTextBox_TextChanged"/>
+
+        <Label Grid.Row="3" Content="Lokalita:" Margin="46,1,112,15" Grid.Column="1"/>
+
+        <Button Grid.Row="3" Content="Potvrdit" Name="ConfirmButton"  Margin="81,70,49,-49" Grid.Column="1" Click="ConfirmButton_Click"/>
+        <TextBox Grid.Row="3" x:Name="LokalitaTextBox" Width="200" Margin="51,30,49,-6" Grid.ColumnSpan="2" TextChanged="LokalitaTextBox_TextChanged"/>
+        <Button Grid.Row="3" Content="Zrušit" x:Name="CancelButton"  Margin="50,70,157,-49" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>
