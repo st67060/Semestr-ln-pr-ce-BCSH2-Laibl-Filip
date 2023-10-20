@@ -14,10 +14,10 @@
         <TextBox Name="NazevTextBox" Grid.Row="2" Margin="159,24,119,23" TextChanged="NazevTextBox_TextChanged"/>
 
         <Label Content="Autor:" Grid.Row="3" Margin="77,5,139,14"/>
-        <TextBox Name="AutorTextBox" Grid.Row="3" Margin="159,61,119,-41" TextChanged="AutorTextBox_TextChanged"/>
+        <TextBox Name="AutorTextBox" Grid.Row="3" Margin="159,6,119,14" TextChanged="AutorTextBox_TextChanged"/>
 
         <Label Content="Rok vydání:" Grid.Row="3" Margin="77,61,256,-41"/>
-        <TextBox Name="RokVydaniTextBox" Grid.Row="3" Margin="159,4,119,15" TextChanged="RokVydaniTextBox_TextChanged"/>
+        <TextBox Name="RokVydaniTextBox" Grid.Row="3" Margin="159,61,119,-42" TextChanged="RokVydaniTextBox_TextChanged"/>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Width="0"/>
         <Button Content="Potvrdit" x:Name="ConfirmButton" Margin="258,103,119,-87" Click="ConfirmButton_Click" Grid.Row="3"/>

@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "lXLay84uhAbu2KIkemKFqgkEQt8gaTxCuRh1+fkcg+UVyZ5Rs4aC02gJeAjD8kbWJfr8z7iLyZelE3OD3xNJxg==",
+  "dgSpecHash": "YsE0Vd/nsrlbdpnxiC8g2Efz4+g8WnVsC/jGqRBQMfO0mnxBFX7naA0QJzBoAHqHpBa/cDIaAIF3Cu2tzKWY9g==",
   "success": true,
   "projectFilePath": "C:\\Users\\laibl\\OneDrive\\Dokumenty\\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\\SemPrace\\SemPrace.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\laibl\\.nuget\\packages\\dapper\\2.1.15\\dapper.2.1.15.nupkg.sha512",
+    "C:\\Users\\laibl\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.118\\stub.system.data.sqlite.core.netstandard.1.0.118.nupkg.sha512",
+    "C:\\Users\\laibl\\.nuget\\packages\\system.data.sqlite.core\\1.0.118\\system.data.sqlite.core.1.0.118.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="DialogVypujckaPridat" Height="559" Width="708">
     <Grid x:Name="grid" Width="700" Height="500">
-        <ListView x:Name="listViewOsoba" d:ItemsSource="{d:SampleData ItemCount=5}" Width="280" Height="500" RenderTransformOrigin="0.136,0.495" Margin="0,0,420,0" SelectionChanged="listViewOsoba_SelectionChanged">
+        <ListView x:Name="listViewOsoba" d:ItemsSource="{d:SampleData ItemCount=5}" Width="280" Height="500" RenderTransformOrigin="0.136,0.495" Margin="10,0,410,0" SelectionChanged="listViewOsoba_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Přijmení" DisplayMemberBinding="{Binding Prijmeni}" Width="90"/>

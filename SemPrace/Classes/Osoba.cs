@@ -17,11 +17,28 @@ namespace SemPrace.Classes
         public string Jmeno
         {
             get { return jmeno; }
+            set
+            {
+                if (jmeno != value)
+                {
+                    jmeno = value;
+                    OnPropertyChanged(nameof(Jmeno));
+                }
+            }
         }
+
 
         public string Prijmeni
         {
             get { return prijmeni; }
+            set
+            {
+                if (prijmeni != value)
+                {
+                    prijmeni = value;
+                    OnPropertyChanged(nameof(Prijmeni));
+                }
+            }
         }
 
         public string Id { get; }

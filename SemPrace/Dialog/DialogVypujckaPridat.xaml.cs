@@ -93,7 +93,6 @@ namespace SemPrace.Dialog
         }
         private void OnPropertyChange()
         {
-            Console.WriteLine("zmena");
             if (calendarIn.SelectedDate == null || calendarOut.SelectedDate ==null || listViewOsoba.SelectedItem == null || calendarIn.SelectedDate > calendarOut.SelectedDate) {
             confirmButton.IsEnabled = false;    
             }

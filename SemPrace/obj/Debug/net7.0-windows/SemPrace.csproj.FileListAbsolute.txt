@@ -51,3 +51,17 @@ C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\ob
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogVypujckaPridat.baml
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\bin\Debug\net7.0-windows\database.db
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\SemPrace_Content.g.cs
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\SemPrace.csproj.AssemblyReference.cache
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\bin\Debug\net7.0-windows\Dapper.dll
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\bin\Debug\net7.0-windows\System.Data.SQLite.dll
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\bin\Debug\net7.0-windows\runtimes\linux-x64\native\SQLite.Interop.dll
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\bin\Debug\net7.0-windows\runtimes\osx-x64\native\SQLite.Interop.dll
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\bin\Debug\net7.0-windows\runtimes\win-x64\native\SQLite.Interop.dll
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\bin\Debug\net7.0-windows\runtimes\win-x86\native\SQLite.Interop.dll
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\SemPrace.csproj.CopyComplete
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogOsobaEdit.baml
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogOsobaPridat.baml
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogOsobaEdit.g.cs
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogOsobaListKnihy.g.cs
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogOsobaPridat.g.cs
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogOsobaListKnihy.baml

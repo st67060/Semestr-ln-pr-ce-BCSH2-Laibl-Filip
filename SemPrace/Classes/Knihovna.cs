@@ -11,6 +11,9 @@ namespace SemPrace.Classes
     public class Knihovna : INotifyPropertyChanged
     {
         private string nazev;
+        private string lokalita;
+        public ObservableCollection<Kniha> Knihy { get; }
+        public ObservableCollection<Osoba> RegistrovaneOsoby { get; }
         public string Nazev
         {
             get { return nazev; }
@@ -24,7 +27,7 @@ namespace SemPrace.Classes
             }
         }
 
-        private string lokalita;
+        
         public string Lokalita
         {
             get { return lokalita; }
@@ -37,8 +40,7 @@ namespace SemPrace.Classes
                 }
             }
         }
-        public ObservableCollection<Kniha> Knihy { get; }
-        public ObservableCollection<Osoba> RegistrovaneOsoby { get; }
+        
 
         public Knihovna(string nazev, string lokalita)
         {

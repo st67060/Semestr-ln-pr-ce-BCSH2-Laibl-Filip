@@ -19,6 +19,15 @@
     <Compile Update="Dialog\DialogKnihovnaEdit.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Dialog\DialogOsobaEdit.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Dialog\DialogOsobaListKnihy.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Dialog\DialogOsobaPridat.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Dialog\DialogVypujckaPridat.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -34,6 +43,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Dialog\DialogKnihovnaEdit.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dialog\DialogOsobaEdit.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dialog\DialogOsobaListKnihy.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dialog\DialogOsobaPridat.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Dialog\DialogVypujckaPridat.xaml">
