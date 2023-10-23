@@ -62,7 +62,7 @@
                 <GridView>
                     <GridViewColumn Header="Přijmení" DisplayMemberBinding="{Binding Prijmeni}" Width="70"/>
                     <GridViewColumn Header="Jméno" DisplayMemberBinding="{Binding Jmeno}" Width="70"/>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="80
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding UzivatelskeCislo}" Width="80
                                     "/>
                 </GridView>
             </ListView.View>
@@ -77,7 +77,7 @@
         </ListView>
         <Label Content="Seznam Knih" HorizontalAlignment="Left" Margin="377,89,0,0" VerticalAlignment="Top" Height="26" Width="122" FontSize="14" FontWeight="Bold"/>
         <Label Content="Seznam Knihoven" HorizontalAlignment="Left" Margin="30,89,0,0" VerticalAlignment="Top" Height="26" Width="134" FontSize="14" FontWeight="Bold"/>
-        <Label Content="Seznam Osob" HorizontalAlignment="Left" Margin="742,89,0,0" VerticalAlignment="Top" Height="26" Width="120" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="seznamOsobLabel" Content="Seznam Osob" HorizontalAlignment="Left" Margin="742,89,0,0" VerticalAlignment="Top" Height="26" Width="120" FontSize="14" FontWeight="Bold"/>
         <Button x:Name="buttonPridatKnihovna" Content="Přidat" HorizontalAlignment="Center" Margin="0,111,0,0" VerticalAlignment="Top" Width="134" Click="buttonPridatKnihovna_Click" Grid.Column="1" Height="30" Background="#FFD6D8CA" BorderThickness="0,0,0,0"/>
         <Separator HorizontalAlignment="Center" Margin="0,232,0,0" VerticalAlignment="Top" Height="24" Width="328" Grid.Column="1"/>
         <Separator HorizontalAlignment="Center" Margin="0,440,0,0" VerticalAlignment="Top" Height="24" Width="328" Grid.Column="1"/>
@@ -116,13 +116,16 @@
         </ComboBox>
         <TextBox x:Name="HledatListViewKniha" Text="Hledat..." Foreground="Gray" GotFocus="SearchTextBox_GotFocus" LostFocus="SearchTextBox_LostFocus" HorizontalAlignment="Left" Margin="190,644,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" Height="20" BorderThickness="0,0,0,0" TextChanged="HledatListViewKniha_TextChanged" FontSize="14"/>
         <TextBox x:Name="HledatListViewOsoba" Text="Hledat..." Foreground="Gray" GotFocus="SearchTextBox2_GotFocus" LostFocus="SearchTextBox2_LostFocus" HorizontalAlignment="Left" Margin="676,644,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" Height="20" BorderThickness="0,0,0,0" TextChanged="HledatListViewOsoba_TextChanged" FontSize="14"/>
-        <ToolBar HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="196" RenderTransformOrigin="0.518,0.551" Background="White">
-            <Button x:Name="buttonNactiData" Content="Načti Data" Width="83" VerticalAlignment="Top"/>
-            <Button x:Name="buttonULozData" Content="Ulož data" Width="89" VerticalAlignment="Top"/>
+        <ToolBar HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="582" RenderTransformOrigin="0.518,0.551" Background="White">
+            <Button x:Name="buttonGeneKnihovna" Content="Generovat Knihovnu" Width="144" VerticalAlignment="Top" Click="buttonGeneKnihovna_Click" />
+            <Button x:Name="buttonGeneKniha" Content="Generovat Knihu" Width="133" VerticalAlignment="Top" Click="buttonGeneKniha_Click" />
+            <Button x:Name="buttonGeneOsoba" Content="Generovat Osobu&#xD;&#xA;" HorizontalAlignment="Left" Width="127" Click="buttonGeneOsoba_Click"/>
+            <Button x:Name="buttonGeneALL" Content="Vygenerovat Vše" HorizontalAlignment="Left" Width="147" Click="buttonGeneALL_Click"/>
+
         </ToolBar>
         <Button Name="MinimizeButton" Content="_" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="20" Click="MinimizeButton_Click" Grid.Row="0" Grid.Column="1" Margin="314,0,0,0" FontFamily="Tw Cen MT" Background="#FFEFC871" BorderThickness="0,0,0,0"/>
         <Button Name="CloseButton" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="20" Click="CloseButton_Click" Grid.Row="0" Grid.Column="1" Margin="344,0,0,0" FontFamily="Tw Cen MT" Background="#FFDA7A7A" BorderThickness="0,0,0,0" RenderTransformOrigin="0.567,0.6"/>
 
     </Grid>
-    
+
 </Window>

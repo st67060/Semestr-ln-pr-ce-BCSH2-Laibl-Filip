@@ -13,7 +13,9 @@ namespace SemPrace.Classes
         private string jmeno;
         private string prijmeni;
         private ObservableCollection<Kniha> historieVypujcenychKnih;
-
+        public int Id { get; set; }
+        public int IdKnihovna { get; set; }
+        public string UzivatelskeCislo { get; set; }
         public string Jmeno
         {
             get { return jmeno; }
@@ -41,7 +43,7 @@ namespace SemPrace.Classes
             }
         }
 
-        public string Id { get; }
+        
 
         public ObservableCollection<Kniha> HistorieVypujcenychKnih
         {
@@ -60,11 +62,18 @@ namespace SemPrace.Classes
         {
             this.jmeno = jmeno;
             this.prijmeni = prijmeni;
-            Id = GenerateUserId();
+            UzivatelskeCislo = VygenerujUzivatelskeCislo();
+            HistorieVypujcenychKnih = new ObservableCollection<Kniha>();
+        }
+        public Osoba()
+        {
+            this.jmeno = null;
+            this.prijmeni = null;
+            UzivatelskeCislo = null;
             HistorieVypujcenychKnih = new ObservableCollection<Kniha>();
         }
 
-        public static string GenerateUserId()
+        public static string VygenerujUzivatelskeCislo()
         {
             Random random = new Random();
             const string chars = "0123456789";

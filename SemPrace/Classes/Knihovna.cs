@@ -12,8 +12,9 @@ namespace SemPrace.Classes
     {
         private string nazev;
         private string lokalita;
-        public ObservableCollection<Kniha> Knihy { get; }
-        public ObservableCollection<Osoba> RegistrovaneOsoby { get; }
+        public ObservableCollection<Kniha> Knihy { get; set; }
+        public ObservableCollection<Osoba> RegistrovaneOsoby { get; set; }
+        public int Id { get; set; }
         public string Nazev
         {
             get { return nazev; }
@@ -40,8 +41,14 @@ namespace SemPrace.Classes
                 }
             }
         }
-        
 
+        public Knihovna()
+        {
+            Nazev = null;
+            Lokalita = null;
+            Knihy = new ObservableCollection<Kniha>();
+            RegistrovaneOsoby = new ObservableCollection<Osoba>();
+        }
         public Knihovna(string nazev, string lokalita)
         {
             Nazev = nazev;

@@ -27,14 +27,23 @@ namespace SemPrace
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<Knihovna> knihovnyObs = new ObservableCollection<Knihovna>();
-
+        //ObservableCollection<Knihovna> knihovnyObs = new ObservableCollection<Knihovna>();
+        ObservableCollection<Knihovna> knihovnyObs;
+        DBConnect db = new DBConnect();
+        GeneratorDat gt = new GeneratorDat();
+        
         public MainWindow()
         {
+            //ObservableCollection<Osoba> nacteneOsoby = db.ReadAllOsobyFromDatabase();
+            //ObservableCollection<Kniha> nacteneKnihy = db.ReadAllKnihyFromDatabase(nacteneOsoby);
+            //knihovnyObs = db.ReadAllKnihovnyFromDatabase();
+            //db.AssignOsobyToKnihovny(knihovnyObs, nacteneOsoby);
+            //db.AssignKnihyToKnihovny(knihovnyObs,nacteneKnihy);
+            //db.AssignHistorieVypujcenychKnih(nacteneOsoby, nacteneKnihy);
+            knihovnyObs = db.NactiDataZDatabaze();
             InitializeComponent();
             ResizeMode = ResizeMode.NoResize;
             MouseLeftButtonDown += Window_MouseLeftButtonDown;
-            
             buttonOdebratKnihovna.IsEnabled = false;
             buttonUpravitKnihovna.IsEnabled = false;
             buttonPridatKniha.IsEnabled = false;
@@ -47,18 +56,20 @@ namespace SemPrace
             buttonUpravitOsoba.IsEnabled = false;
             buttonOdebratOsoba.IsEnabled = false;
             buttonZobrazVypKnihyOsoba.IsEnabled = false;
+            buttonGeneKniha.IsEnabled = false;
+            buttonGeneOsoba.IsEnabled = false;
            comboBoxKniha.SelectedIndex = 0;
 
-            Knihovna knihovna = new Knihovna("Univerzitni", "Pardubice");
-            Kniha kniha = new Kniha("Robot", "Karel Čapek", 1998);
-            Osoba osoba = new Osoba("Václav", "Pavlíček");
-            knihovna.PridatKniha(kniha);
-            knihovna.PridatOsobu(osoba);
+            //Knihovna knihovna = new Knihovna("Univerzitni", "Pardubice");
+            //Kniha kniha = new Kniha("Robot", "Karel Čapek", 1998);
+            //Osoba osoba = new Osoba("Václav", "Pavlíček");
+            //knihovna.PridatKniha(kniha);
+            //knihovna.PridatOsobu(osoba);
 
-            knihovnyObs.Add(knihovna);
+            //knihovnyObs.Add(knihovna);
             listViewKnihovna.ItemsSource = knihovnyObs;
-            listViewKniha.ItemsSource = knihovna.Knihy;
-            listViewOsoba.ItemsSource = knihovna.RegistrovaneOsoby;
+            
+
 
         }
         private void listViewKnihovna_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -69,6 +80,8 @@ namespace SemPrace
             buttonUpravitKnihovna.IsEnabled = isAnyKnihaSelected;
             buttonPridatKniha.IsEnabled = isAnyKnihaSelected;
             buttonPridatOsoba.IsEnabled = isAnyKnihaSelected;
+            buttonGeneKniha.IsEnabled = isAnyKnihaSelected;
+            buttonGeneOsoba.IsEnabled = isAnyKnihaSelected;
         }
         private void listViewKnihovna_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -78,9 +91,15 @@ namespace SemPrace
             buttonUpravitKnihovna.IsEnabled = isAnyKnihaSelected;
             buttonPridatKniha.IsEnabled = isAnyKnihaSelected;
             buttonPridatOsoba.IsEnabled = isAnyKnihaSelected;
+            buttonGeneKniha.IsEnabled = isAnyKnihaSelected;
+            buttonGeneOsoba.IsEnabled = isAnyKnihaSelected;
             int selectedIndex = listViewKnihovna.SelectedIndex;
-            listViewKniha.ItemsSource = knihovnyObs[selectedIndex].Knihy;
-            listViewOsoba.ItemsSource = knihovnyObs[selectedIndex].RegistrovaneOsoby;
+            if (selectedIndex >= 0) {
+                listViewKniha.ItemsSource = knihovnyObs[selectedIndex].Knihy;
+                listViewOsoba.ItemsSource = knihovnyObs[selectedIndex].RegistrovaneOsoby;
+            }
+            
+           
         }
         private void listViewKniha_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -111,7 +130,11 @@ namespace SemPrace
 
             if (result == true)
             {
-                knihovnyObs.Add(new Knihovna(dialog.Nazev, dialog.Lokalita));
+                Knihovna temp = new Knihovna(dialog.Nazev, dialog.Lokalita);
+                temp.Id = gt.GenerateUniqueId();
+                knihovnyObs.Add(temp);
+                db.UlozDataDoDatabaze(knihovnyObs);
+
             }
         }
 
@@ -127,6 +150,7 @@ namespace SemPrace
                 {
                     temp.Nazev = dialog.Nazev;
                     temp.Lokalita = dialog.Lokalita;
+                    db.UlozDataDoDatabaze(knihovnyObs);
                 }
             }
         }
@@ -134,7 +158,9 @@ namespace SemPrace
         private void buttonOdebratKnihovna_Click(object sender, RoutedEventArgs e)
         {
             int selectedIndex = listViewKnihovna.SelectedIndex;
+            db.RemoveKnihovnaById(knihovnyObs[selectedIndex].Id);
             knihovnyObs.RemoveAt(selectedIndex);
+            db.UlozDataDoDatabaze(knihovnyObs);
         }
 
         private void buttonPridatKniha_Click(object sender, RoutedEventArgs e)
@@ -148,8 +174,11 @@ namespace SemPrace
 
                 if (result == true)
                 {
-                    Kniha kniha = new Kniha(dialog.Nazev, dialog.Autor, dialog.RokVydani);
-                    knihovnyObs[selectedIndex].PridatKniha(kniha);
+                    Kniha temp = new Kniha(dialog.Nazev, dialog.Autor, dialog.RokVydani);
+                    temp.Id = gt.GenerateUniqueId();
+                    temp.IdKnihovna = knihovnyObs[selectedIndex].Id;
+                    knihovnyObs[selectedIndex].PridatKniha(temp);
+                    db.UlozDataDoDatabaze(knihovnyObs);
                 }
             }
         }
@@ -167,6 +196,7 @@ namespace SemPrace
                     kniha.Nazev = dialog.Nazev;
                     kniha.Autor = dialog.Autor;
                     kniha.RokVydani = dialog.RokVydani;
+                    db.UlozDataDoDatabaze(knihovnyObs);
                 }
             }
 
@@ -177,7 +207,9 @@ namespace SemPrace
         {
             int selectedIndexKnihovna = listViewKnihovna.SelectedIndex;
             int selectedIndexKniha = listViewKniha.SelectedIndex;
+            db.RemoveKnihaById(knihovnyObs[selectedIndexKnihovna].Knihy[selectedIndexKniha].Id);
             knihovnyObs[selectedIndexKnihovna].Knihy.RemoveAt(selectedIndexKniha);
+            db.UlozDataDoDatabaze(knihovnyObs);
         }
 
         private void buttonPridatVyp_Click(object sender, RoutedEventArgs e)
@@ -191,6 +223,7 @@ namespace SemPrace
                 vybranaKniha.zadejVypujcku(dialog.Osoba, dialog.DateZacatek, dialog.DateKonec);
                 buttonUpravVyp.IsEnabled = true;
                 buttonOdeberVyp.IsEnabled = true;
+                db.UlozDataDoDatabaze(knihovnyObs);
             }
 
         }
@@ -201,6 +234,7 @@ namespace SemPrace
             if (vybranaKniha != null)
             {
                 vybranaKniha.prodluzVypujcku();
+                db.UlozDataDoDatabaze(knihovnyObs);
             }
         }
 
@@ -212,6 +246,7 @@ namespace SemPrace
                 vybranaKniha.odeberVypujcku();
                 buttonUpravVyp.IsEnabled = false;
                 buttonOdeberVyp.IsEnabled = false;
+                db.UlozDataDoDatabaze(knihovnyObs);
             }
         }
 
@@ -226,8 +261,11 @@ namespace SemPrace
 
                 if (result == true)
                 {
-                    Osoba osoba = new Osoba(dialog.Jmeno,dialog.Prijmeni);
-                    knihovnyObs[selectedIndex].PridatOsobu(osoba);
+                    Osoba temp = new Osoba(dialog.Jmeno,dialog.Prijmeni);
+                    temp.Id = gt.GenerateUniqueId();
+                    temp.IdKnihovna = knihovnyObs[selectedIndex].Id;
+                    knihovnyObs[selectedIndex].PridatOsobu(temp);
+                    db.UlozDataDoDatabaze(knihovnyObs);
                 }
             }
         }
@@ -244,6 +282,7 @@ namespace SemPrace
                 {
                     osoba.Jmeno = dialog.Jmeno;
                     osoba.Prijmeni = dialog.Prijmeni;
+                    db.UlozDataDoDatabaze(knihovnyObs);
                 }
             }
         }
@@ -252,7 +291,9 @@ namespace SemPrace
         {
             int selectedIndexKnihovna = listViewKnihovna.SelectedIndex;
             int selectedIndexOsoba = listViewOsoba.SelectedIndex;
+            db.RemoveOsobaById(knihovnyObs[selectedIndexKnihovna].RegistrovaneOsoby[selectedIndexOsoba].Id);
             knihovnyObs[selectedIndexKnihovna].RegistrovaneOsoby.RemoveAt(selectedIndexOsoba);
+            db.UlozDataDoDatabaze(knihovnyObs);
         }
 
         private void buttonZobrazVypKnihyOsoba_Click(object sender, RoutedEventArgs e)
@@ -316,7 +357,7 @@ namespace SemPrace
                 foreach (Osoba item in knihovnyObs[listViewKnihovna.SelectedIndex].RegistrovaneOsoby)
                 {
 
-                    if (item.Jmeno.ToLower().Contains(searchText) || item.Prijmeni.ToLower().Contains(searchText) || item.Id.ToLower().Contains(searchText))
+                    if (item.Jmeno.ToLower().Contains(searchText) || item.Prijmeni.ToLower().Contains(searchText) || item.UzivatelskeCislo.ToLower().Contains(searchText))
 
                     {
                         filteredItems.Add(item);
@@ -445,6 +486,7 @@ namespace SemPrace
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+           
             Close();
         }
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -452,7 +494,40 @@ namespace SemPrace
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
         }
-        // Doplnky
+
         
+        private void buttonNactiData_Click(object sender, RoutedEventArgs e)
+        {
+            knihovnyObs = db.NactiDataZDatabaze();
+        }
+        
+
+        private void buttonGeneKnihovna_Click(object sender, RoutedEventArgs e)
+        {
+            knihovnyObs.Add(gt.GenerateKnihovna());
+            db.UlozDataDoDatabaze(knihovnyObs);
+        }
+
+        private void buttonGeneKniha_Click(object sender, RoutedEventArgs e)
+        {
+            int selectedIndex = listViewKnihovna.SelectedIndex;
+            knihovnyObs[selectedIndex].PridatKniha(gt.GenerateKniha(knihovnyObs[selectedIndex]));
+            db.UlozDataDoDatabaze(knihovnyObs);
+        }
+
+        private void buttonGeneOsoba_Click(object sender, RoutedEventArgs e)
+        {
+            int selectedIndex = listViewKnihovna.SelectedIndex;
+            knihovnyObs[selectedIndex].PridatOsobu(gt.GenerateOsoba(knihovnyObs[selectedIndex]));
+
+            db.UlozDataDoDatabaze(knihovnyObs);
+        }
+
+        private void buttonGeneALL_Click(object sender, RoutedEventArgs e)
+        {
+
+            knihovnyObs = gt.GenerateAll();
+            db.UlozDataDoDatabaze(knihovnyObs);
+        }
     }
 }

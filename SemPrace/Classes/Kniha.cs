@@ -16,7 +16,8 @@ namespace SemPrace.Classes
         private DateOnly datumVypujceni;
         private DateOnly datumNavraceni;
         private Osoba vypujcil;
-        
+        public int Id { get; set; }
+        public int IdKnihovna { get; set; }
         public string Nazev
         {
             get { return nazev; }
@@ -109,9 +110,20 @@ namespace SemPrace.Classes
 
         public Kniha(string nazev, string autor, int rokVydani)
         {
+            Id = 0;
+            IdKnihovna = 0;
             Nazev = nazev;
             Autor = autor;
             RokVydani = rokVydani;
+            Vypujceni = false;
+            DatumVypujceni = DateOnly.MinValue;
+            DatumNavraceni = DateOnly.MinValue;
+        }
+        public Kniha()
+        {
+            Nazev = null;
+            Autor = null;
+            RokVydani = 0;
             Vypujceni = false;
             DatumVypujceni = DateOnly.MinValue;
             DatumNavraceni = DateOnly.MinValue;
