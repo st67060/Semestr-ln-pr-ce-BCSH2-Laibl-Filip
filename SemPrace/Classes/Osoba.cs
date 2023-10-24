@@ -62,7 +62,7 @@ namespace SemPrace.Classes
         {
             this.jmeno = jmeno;
             this.prijmeni = prijmeni;
-            UzivatelskeCislo = VygenerujUzivatelskeCislo();
+            UzivatelskeCislo = GenerateUzivatelskeCislo();
             HistorieVypujcenychKnih = new ObservableCollection<Kniha>();
         }
         public Osoba()
@@ -73,7 +73,7 @@ namespace SemPrace.Classes
             HistorieVypujcenychKnih = new ObservableCollection<Kniha>();
         }
 
-        public static string VygenerujUzivatelskeCislo()
+        public static string GenerateUzivatelskeCislo()
         {
             Random random = new Random();
             const string chars = "0123456789";

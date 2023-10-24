@@ -129,7 +129,7 @@ namespace SemPrace.Classes
             DatumNavraceni = DateOnly.MinValue;
         }
         //Metoda pro zadání výpujčky, datum je vygenerovan
-        public void zadejVypujcku(Osoba osoba)
+        public void SetVypujcka(Osoba osoba)
         {
             if (this.Vypujceni)
             {
@@ -142,7 +142,7 @@ namespace SemPrace.Classes
             osoba.HistorieVypujcenychKnih.Add(this);
 
         }
-        public void zadejVypujcku(Osoba osoba, DateOnly datumVypujceni, DateOnly datumVraceni)
+        public void SetVypujcka(Osoba osoba, DateOnly datumVypujceni, DateOnly datumVraceni)
         {
             if (this.Vypujceni)
             {
@@ -156,7 +156,7 @@ namespace SemPrace.Classes
 
         }
         //Metoda pro odebrání výpujčky z knihy
-        public void odeberVypujcku()
+        public void RemoveVypujcka()
         {
             if (!this.Vypujceni)
             {
@@ -169,7 +169,7 @@ namespace SemPrace.Classes
 
         }
         //Metoda pro prodluzovani casu vypujcky, vzdy posune datum o 14 dni
-        public void prodluzVypujcku()
+        public void ExtendVypujcka()
         {
             if (!this.Vypujceni)
             {

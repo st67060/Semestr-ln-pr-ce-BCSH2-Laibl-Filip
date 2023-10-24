@@ -6,24 +6,42 @@
         xmlns:local="clr-namespace:SemPrace.Dialog"
         mc:Ignorable="d"
         Title="DialogVypujckaPridat" Height="559" Width="708">
-    <Grid x:Name="grid" Width="700" Height="500">
-        <ListView x:Name="listViewOsoba" d:ItemsSource="{d:SampleData ItemCount=5}" Width="280" Height="500" RenderTransformOrigin="0.136,0.495" Margin="10,0,410,0" SelectionChanged="listViewOsoba_SelectionChanged">
+    <Grid x:Name="grid" Width="700" Height="500" HorizontalAlignment="Center" Margin="0,0,0,21" VerticalAlignment="Bottom">
+        <ListView x:Name="listViewOsoba" d:ItemsSource="{d:SampleData ItemCount=5}" Width="280" Height="500" RenderTransformOrigin="0.136,0.495" Margin="10,0,410,0" SelectionChanged="listViewOsoba_SelectionChanged" Background="#FFC5C3C3">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Přijmení" DisplayMemberBinding="{Binding Prijmeni}" Width="90"/>
                     <GridViewColumn Header="Jméno" DisplayMemberBinding="{Binding Jmeno}" Width="90"/>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="100"/>
+                    <GridViewColumn Header="UzivatelskeCislo" DisplayMemberBinding="{Binding UzivatelskeCislo}" Width="100"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Calendar x:Name="calendarIn" HorizontalAlignment="Left" Margin="295,82,0,0" VerticalAlignment="Top" Width="180" Height="180" DisplayDateChanged="calendarIn_DisplayDateChanged" SelectedDatesChanged="calendarIn_SelectedDatesChanged"/>
-        <Calendar x:Name="calendarOut" HorizontalAlignment="Left" Margin="497,82,0,0" VerticalAlignment="Top" Width="180" Height="180" DisplayDateChanged="calendarOut_DisplayDateChanged" SelectedDatesChanged="calendarOut_SelectedDatesChanged"/>
-        <Label Content="Vyberte datum začátku" HorizontalAlignment="Left" Margin="319,54,0,0" VerticalAlignment="Top"/>
-        <Label Content="Vyberte datum konce" HorizontalAlignment="Left" Margin="525,54,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="cancelButton" Content="Zrušit" HorizontalAlignment="Left" Margin="326,441,0,0" VerticalAlignment="Top" Height="24" Width="125" Click="cancelButton_Click"/>
-        <Button x:Name="confirmButton" Content="Potvrdit" HorizontalAlignment="Left" Margin="525,440,0,0" VerticalAlignment="Top" Height="25" Width="125" Click="confirmButton_Click"/>
-        <TextBlock x:Name="textBlockIn" HorizontalAlignment="Left" Margin="350,267,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="90" Height="25"/>
-        <TextBlock x:Name="textBlockOut" HorizontalAlignment="Left" Margin="551,267,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="72" Height="25"/>
+        <Calendar x:Name="calendarIn" HorizontalAlignment="Left" Margin="295,82,0,0" VerticalAlignment="Top" Width="180" Height="180" DisplayDateChanged="calendarIn_DisplayDateChanged" SelectedDatesChanged="calendarIn_SelectedDatesChanged">
+            <Calendar.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE4EAF0"/>
+                    <GradientStop Color="#FFECF0F4" Offset="0.16"/>
+                    <GradientStop Color="#FFFCFCFD" Offset="0.16"/>
+                    <GradientStop Color="#FFFFF1CA" Offset="1"/>
+                </LinearGradientBrush>
+            </Calendar.Background>
+        </Calendar>
+        <Calendar x:Name="calendarOut" HorizontalAlignment="Left" Margin="497,82,0,0" VerticalAlignment="Top" Width="180" Height="180" DisplayDateChanged="calendarOut_DisplayDateChanged" SelectedDatesChanged="calendarOut_SelectedDatesChanged">
+            <Calendar.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFE4EAF0"/>
+                    <GradientStop Color="#FFECF0F4" Offset="0.16"/>
+                    <GradientStop Color="#FFFCFCFD" Offset="0.16"/>
+                    <GradientStop Color="#FFC6D4FF" Offset="1"/>
+                </LinearGradientBrush>
+            </Calendar.Background>
+        </Calendar>
+        <Label Content="Vyberte datum začátku" HorizontalAlignment="Left" Margin="319,54,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Vyberte datum konce" HorizontalAlignment="Left" Margin="525,54,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Button x:Name="cancelButton" Content="Zrušit" HorizontalAlignment="Left" Margin="326,441,0,0" VerticalAlignment="Top" Height="30" Width="125" Click="cancelButton_Click" Background="#FFF5C3C3" BorderThickness="0,0,0,0" FontWeight="Bold"/>
+        <Button x:Name="confirmButton" Content="Potvrdit" HorizontalAlignment="Left" Margin="525,440,0,0" VerticalAlignment="Top" Height="30" Width="125" Click="confirmButton_Click" Background="#FFC5DEA3" BorderThickness="0,0,0,0" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlockIn" HorizontalAlignment="Left" Margin="350,267,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="101" Height="25" FontSize="16"/>
+        <TextBlock x:Name="textBlockOut" HorizontalAlignment="Left" Margin="551,267,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="99" Height="25" FontSize="16"/>
 
     </Grid>
 </Window>

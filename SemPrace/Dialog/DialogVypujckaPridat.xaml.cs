@@ -26,7 +26,14 @@ namespace SemPrace.Dialog
         public DateOnly DateKonec { get; set; }
         public DialogVypujckaPridat(Knihovna knihovna)
         {
+            
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
+            //nastavení výchozích hodnot pro komponenty ( aktualni den, akt den +14)
+            calendarIn.SelectedDate = DateTime.Today;
+            calendarOut.SelectedDate = DateTime.Today.AddDays(14);
+            textBlockIn.Text = DateOnly.FromDateTime(DateTime.Today).ToString();
+            textBlockOut.Text=  DateOnly.FromDateTime(DateTime.Today.AddDays(14)).ToString();
             confirmButton.IsEnabled = false;
             listViewOsoba.ItemsSource = knihovna.RegistrovaneOsoby;
         }
@@ -93,7 +100,7 @@ namespace SemPrace.Dialog
         }
         private void OnPropertyChange()
         {
-            if (calendarIn.SelectedDate == null || calendarOut.SelectedDate ==null || listViewOsoba.SelectedItem == null || calendarIn.SelectedDate > calendarOut.SelectedDate) {
+            if (textBlockIn == null || textBlockOut == null || listViewOsoba.SelectedItem == null || calendarIn.SelectedDate > calendarOut.SelectedDate) {
             confirmButton.IsEnabled = false;    
             }
             else { confirmButton.IsEnabled = true; }

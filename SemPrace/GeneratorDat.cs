@@ -34,17 +34,12 @@ namespace SemPrace
         "Civic Center", "Heritage Center", "Cultural Center", "Study Center", "Discovery Center"
     };
             string[] lokace = {
-        "New York", "Los Angeles", "Chicago", "Houston", "Phoenix",
-        "Philadelphia", "San Antonio", "San Diego", "Dallas", "San Jose",
-        "Austin", "Jacksonville", "San Francisco", "Columbus", "Indianapolis",
-        "Seattle", "Denver", "Washington, D.C.", "Boston", "Nashville",
-        "Las Vegas", "Portland", "Atlanta", "Miami", "Charlotte",
-        "Minneapolis", "Orlando", "Tampa", "St. Louis", "Baltimore",
-        "Salt Lake City", "Austin", "Kansas City", "Raleigh", "Cleveland",
-        "Honolulu", "Pittsburgh", "Detroit", "Albuquerque", "Tucson",
-        "Memphis", "Milwaukee", "Oklahoma City", "Buffalo", "New Orleans",
-        "Cincinnati", "Hartford", "Rochester", "San Juan"
-    };
+    "Praha", "Paříž", "Londýn", "Berlín", "Vídeň", "Řím", "Moskva", "Madrid", "Varšava", "Oslo",
+    "Atény", "Tokio", "Dublin", "Kyjev", "Lisabon", "Budapešť", "Helsinki", "Istanbul", "Bratislava", "Ženeva",
+    "Dublin", "Stockholm", "Bern", "Řím", "Oslo", "Paříž", "Ženeva", "Amsterdam", "Dublin", "Lisabon",
+    "Řím", "Ženeva", "Oslo", "Paříž", "Berlín", "Istanbul", "Kyjev", "Madrid", "Vídeň", "Praha",
+    "Řím", "Tokio", "Paříž", "Londýn", "Oslo", "Madrid", "Kyjev", "Varšava", "Vídeň", "Praha"
+};
             Knihovna knihovna = new Knihovna();
 
             string nazev = nazvy[random.Next(nazvy.Length)];
@@ -90,19 +85,20 @@ namespace SemPrace
             kniha.Id = GenerateUniqueId();
             return kniha;
         }
-        public Osoba GenerateOsoba(Knihovna knihovna) {
+        public Osoba GenerateOsoba(Knihovna knihovna)
+        {
             string[] jmena = {
-            "Jan", "Eva", "Petr", "Jana", "Martin",
-            "Lenka", "Josef", "Marta", "Miroslav", "Alena",
-            "Tomáš", "Hana", "Karel", "Lucie", "Jakub",
-            "Marie", "Václav", "Veronika", "Zdeněk", "Kateřina",
-            "David", "Irena", "Lukáš", "Jitka", "Filip",
-            "Michaela", "Pavel", "Ivana", "Jaroslav", "Monika",
-            "Patrik", "Simona", "Ondřej", "Lenka", "Adam",
-            "Petra", "Radek", "Tereza", "Richard", "Markéta",
-            "Michal", "Karolína", "Robert", "Šárka", "Ladislav",
-            "Nikola", "Vojtěch", "Marcela", "Vladimír"
-        };
+         "Jan", "Adam", "Petr", "Petr", "Martin",
+           "Lukáš", "Josef", "Marta", "Miroslav", "Petr",
+      "Tomáš", "Jan", "Karel", "Petr", "Jakub",
+      "Jan", "Václav", "Petr", "Zdeněk", "Petr",
+       "David", "Jan", "Lukáš", "Petr", "Filip",
+      "Jan", "Pavel", "Jan", "Jaroslav", "Monika",
+      "Patrik", "Jan", "Ondřej", "Petr", "Adam",
+        "Petr", "Radek", "Tereza", "Richard", "Petr",
+      "Michal", "Petr", "Robert", "Petr", "Ladislav",
+      "Jan", "Vojtěch", "Petr", "Vladimír"
+                };
 
             string[] prijmeni = {
             "Novák", "Svoboda", "Novotný", "Dvořák", "Černý",
@@ -118,14 +114,15 @@ namespace SemPrace
         };
             string Jmeno = jmena[random.Next(jmena.Length)];
             string prijm = prijmeni[random.Next(prijmeni.Length)];
-            Osoba osoba = new Osoba(Jmeno,prijm);
+            Osoba osoba = new Osoba(Jmeno, prijm);
             osoba.Id = GenerateUniqueId();
             osoba.IdKnihovna = knihovna.Id;
             return osoba;
         }
-        public ObservableCollection<Knihovna> GenerateAll() {
-            ObservableCollection <Knihovna> knihovny = new ObservableCollection<Knihovna>();    
-        for (int i = 0; i < 10; i++)
+        public ObservableCollection<Knihovna> GenerateAll()
+        {
+            ObservableCollection<Knihovna> knihovny = new ObservableCollection<Knihovna>();
+            for (int i = 0; i < 10; i++)
             {
                 knihovny.Add(GenerateKnihovna());
             }
@@ -133,9 +130,9 @@ namespace SemPrace
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    knihovna.PridatOsobu(GenerateOsoba(knihovna));
-                    knihovna.PridatKniha(GenerateKniha(knihovna));
-                    
+                    knihovna.AddOsoba(GenerateOsoba(knihovna));
+                    knihovna.AddKniha(GenerateKniha(knihovna));
+
                 }
             }
             return knihovny;

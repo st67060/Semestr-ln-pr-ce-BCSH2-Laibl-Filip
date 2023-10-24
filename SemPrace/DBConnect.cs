@@ -16,7 +16,7 @@ namespace SemPrace
     public class DBConnect
     {
         private string databasePath = "database.db";
-        public ObservableCollection<Knihovna>  NactiDataZDatabaze()
+        public ObservableCollection<Knihovna> LoadDataFromDatabase()
         {
             ObservableCollection<Knihovna> nacteneKnihovny = ReadAllKnihovnyFromDatabase();
             ObservableCollection<Osoba> nacteneOsoby = ReadAllOsobyFromDatabase();
@@ -27,11 +27,24 @@ namespace SemPrace
 
             return nacteneKnihovny;
         }
-        public void UlozDataDoDatabaze(ObservableCollection<Knihovna> knihovny) {
+        public void SaveDataToDatabase(ObservableCollection<Knihovna> knihovny)
+        {
             SaveKnihovnyToDatabase(knihovny);
             SaveOsobyToDatabase(knihovny);
             SaveKnihyToDatabase(knihovny);
             SaveHistorieVypujcenychKnihToDatabase(knihovny);
+        }
+        public void SaveKnihaToDatabase(Kniha kniha)
+        {
+            SaveKnihyToDatabase(kniha);
+
+        }
+        public void SaveOsobaToDatabase(Osoba osoba)
+        {
+            SaveOsobyToDatabase(osoba);
+        }
+        public void SaveKnihovnaToDatabase(Knihovna knihovna) {
+            SaveKnihovnyToDatabase(knihovna);
         }
         public ObservableCollection<Knihovna> ReadAllKnihovnyFromDatabase()
         {
@@ -137,8 +150,8 @@ namespace SemPrace
 
             return knihy;
         }
-        
-        public  void SaveKnihovnyToDatabase(ObservableCollection<Knihovna> knihovny)
+
+        public void SaveKnihovnyToDatabase(ObservableCollection<Knihovna> knihovny)
         {
             using (SQLiteConnection connection = new SQLiteConnection($"Data Source={databasePath};Version=3;"))
             {
@@ -152,7 +165,7 @@ namespace SemPrace
                         command.Parameters.AddWithValue("@Id", knihovna.Id);
                         command.Parameters.AddWithValue("@Nazev", knihovna.Nazev);
                         command.Parameters.AddWithValue("@Lokalita", knihovna.Lokalita);
-                        
+
                         command.ExecuteNonQuery();
                     }
                 }
@@ -160,7 +173,27 @@ namespace SemPrace
                 connection.Close();
             }
         }
-        public  void SaveOsobyToDatabase(ObservableCollection<Knihovna> knihovny)
+        public void SaveKnihovnyToDatabase(Knihovna knihovna)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection($"Data Source={databasePath};Version=3;"))
+            {
+                connection.Open();
+
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    command.CommandText = "INSERT OR REPLACE INTO Knihovna (Id, Nazev, Lokalita) VALUES (@Id, @Nazev, @Lokalita);";
+                    command.Parameters.AddWithValue("@Id", knihovna.Id);
+                    command.Parameters.AddWithValue("@Nazev", knihovna.Nazev);
+                    command.Parameters.AddWithValue("@Lokalita", knihovna.Lokalita);
+
+                    command.ExecuteNonQuery();
+                }
+
+
+                connection.Close();
+            }
+        }
+        public void SaveOsobyToDatabase(ObservableCollection<Knihovna> knihovny)
         {
             using (SQLiteConnection connection = new SQLiteConnection($"Data Source={databasePath};Version=3;"))
             {
@@ -186,6 +219,26 @@ namespace SemPrace
                 connection.Close();
             }
         }
+        public void SaveOsobyToDatabase(Osoba osoba)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection($"Data Source={databasePath};Version=3;"))
+            {
+                connection.Open();
+
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    command.CommandText = "INSERT OR REPLACE INTO Osoba (Jmeno, Prijmeni, IdKnihovna, Id, UzivatelskeCislo) VALUES (@Jmeno, @Prijmeni, @IdKnihovna, @Id, @UzivatelskeCislo);";
+                    command.Parameters.AddWithValue("@Jmeno", osoba.Jmeno);
+                    command.Parameters.AddWithValue("@Prijmeni", osoba.Prijmeni);
+                    command.Parameters.AddWithValue("@UzivatelskeCislo", osoba.UzivatelskeCislo);
+                    command.Parameters.AddWithValue("@Id", osoba.Id);
+                    command.Parameters.AddWithValue("@IdKnihovna", osoba.IdKnihovna);
+                    command.ExecuteNonQuery();
+                }
+
+                connection.Close();
+            }
+        }
         public void SaveKnihyToDatabase(ObservableCollection<Knihovna> knihovny)
         {
             using (SQLiteConnection connection = new SQLiteConnection($"Data Source={databasePath};Version=3;"))
@@ -204,8 +257,8 @@ namespace SemPrace
                             command.Parameters.AddWithValue("@Autor", kniha.Autor);
                             command.Parameters.AddWithValue("@RokVydani", kniha.RokVydani);
                             command.Parameters.AddWithValue("@Vypujceni", ConvertToIntFromBool(kniha.Vypujceni));
-                            command.Parameters.AddWithValue("@DatumVypujceni", kniha.DatumVypujceni.ToString()); 
-                            command.Parameters.AddWithValue("@DatumNavraceni", kniha.DatumNavraceni.ToString()); 
+                            command.Parameters.AddWithValue("@DatumVypujceni", kniha.DatumVypujceni.ToString());
+                            command.Parameters.AddWithValue("@DatumNavraceni", kniha.DatumNavraceni.ToString());
                             command.Parameters.AddWithValue("@IdKnihovna", knihovna.Id);
                             command.Parameters.AddWithValue("@Id", kniha.Id);
 
@@ -220,6 +273,39 @@ namespace SemPrace
                             command.ExecuteNonQuery();
                         }
                     }
+                }
+
+                connection.Close();
+            }
+        }
+        public void SaveKnihyToDatabase(Kniha kniha)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection($"Data Source={databasePath};Version=3;"))
+            {
+                connection.Open();
+
+                using (SQLiteCommand command = new SQLiteCommand(connection))
+                {
+                    command.CommandText = "INSERT OR REPLACE INTO Kniha (nazev, autor, rokVydani, vypujceni, datumVypujceni, datumNavraceni, IdKnihovna, Id, Vypujcil) " +
+                                         "VALUES (@Nazev, @Autor, @RokVydani, @Vypujceni, @DatumVypujceni, @DatumNavraceni, @IdKnihovna, @Id, @Vypujcil);";
+                    command.Parameters.AddWithValue("@Nazev", kniha.Nazev);
+                    command.Parameters.AddWithValue("@Autor", kniha.Autor);
+                    command.Parameters.AddWithValue("@RokVydani", kniha.RokVydani);
+                    command.Parameters.AddWithValue("@Vypujceni", ConvertToIntFromBool(kniha.Vypujceni));
+                    command.Parameters.AddWithValue("@DatumVypujceni", kniha.DatumVypujceni.ToString());
+                    command.Parameters.AddWithValue("@DatumNavraceni", kniha.DatumNavraceni.ToString());
+                    command.Parameters.AddWithValue("@IdKnihovna", kniha.IdKnihovna);
+                    command.Parameters.AddWithValue("@Id", kniha.Id);
+
+                    if (kniha.Vypujcil != null)
+                    {
+                        command.Parameters.AddWithValue("@Vypujcil", kniha.Vypujcil.Id);
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@Vypujcil", DBNull.Value);
+                    }
+                    command.ExecuteNonQuery();
                 }
 
                 connection.Close();
@@ -262,7 +348,7 @@ namespace SemPrace
 
                 connection.Close();
             }
-      
+
 
 
         }
@@ -271,7 +357,7 @@ namespace SemPrace
 
             foreach (var knihovna in knihovny)
             {
-                knihovna.RegistrovaneOsoby.Clear(); 
+                knihovna.RegistrovaneOsoby.Clear();
                 foreach (var osoba in osoby.Where(os => os.IdKnihovna == knihovna.Id))
                 {
                     knihovna.RegistrovaneOsoby.Add(osoba);
@@ -282,7 +368,7 @@ namespace SemPrace
         {
             foreach (var knihovna in knihovny)
             {
-                knihovna.Knihy.Clear(); 
+                knihovna.Knihy.Clear();
                 foreach (var kniha in knihy.Where(k => k.IdKnihovna == knihovna.Id))
                 {
                     knihovna.Knihy.Add(kniha);
@@ -337,7 +423,7 @@ namespace SemPrace
         private int ConvertToIntFromBool(bool value)
         {
             if (value) { return -1; }
-            else { return 0; }  
+            else { return 0; }
 
         }
         public void RemoveKnihaById(int knihaId)
@@ -346,7 +432,7 @@ namespace SemPrace
             {
                 connection.Open();
 
-            
+
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText = "DELETE FROM KnihyOsoby WHERE IdKniha = @IdKniha;";
@@ -354,7 +440,7 @@ namespace SemPrace
                     command.ExecuteNonQuery();
                 }
 
-        
+
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
                     command.CommandText = "DELETE FROM Kniha WHERE Id = @Id;";
@@ -365,7 +451,7 @@ namespace SemPrace
                 connection.Close();
             }
         }
-   
+
 
         public void RemoveOsobaById(int osobaId)
         {
@@ -398,7 +484,7 @@ namespace SemPrace
             {
                 connection.Open();
 
-               
+
                 List<int> osobyKOdstraneni = new List<int>();
                 using (SQLiteCommand command = new SQLiteCommand(connection))
                 {
@@ -414,10 +500,10 @@ namespace SemPrace
                     }
                 }
 
-               
+
                 foreach (int osobaId in osobyKOdstraneni)
                 {
-                   
+
                     using (SQLiteCommand command = new SQLiteCommand(connection))
                     {
                         command.CommandText = "DELETE FROM KnihyOsoby WHERE IdOsoba = @IdOsoba;";
@@ -449,7 +535,7 @@ namespace SemPrace
 
                 connection.Close();
             }
-            
+
             using (SQLiteConnection connection = new SQLiteConnection($"Data Source={databasePath};Version=3;"))
             {
                 connection.Open();

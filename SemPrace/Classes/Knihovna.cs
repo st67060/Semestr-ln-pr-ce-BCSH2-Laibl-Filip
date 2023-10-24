@@ -57,19 +57,16 @@ namespace SemPrace.Classes
             RegistrovaneOsoby = new ObservableCollection<Osoba>();
         }
 
-        public void PridatKniha(Kniha kniha)
+        public void AddKniha(Kniha kniha)
         {
             Knihy.Add(kniha);
         }
 
-        public void PridatOsobu(Osoba osoba)
+        public void AddOsoba(Osoba osoba)
         {
             RegistrovaneOsoby.Add(osoba);
         }
-        public override string ToString()
-        {
-            return Nazev +""+ Lokalita;
-        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)

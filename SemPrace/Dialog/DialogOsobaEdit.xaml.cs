@@ -24,11 +24,13 @@ namespace SemPrace.Dialog
         public String Prijmeni { get; set; }
         public DialogOsobaEdit(Osoba osoba)
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
+            ConfirmButton.IsEnabled = false;
             Jmeno = osoba.Jmeno;
             Prijmeni = osoba.Prijmeni;
-            JmenoTextBox.Text = osoba.Jmeno;
-            PrijmeniTextBox.Text = osoba.Prijmeni;
+            JmenoTextBox.Text = Jmeno;
+            PrijmeniTextBox.Text = Prijmeni;
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
@@ -47,7 +49,7 @@ namespace SemPrace.Dialog
 
         private void PrijmeniTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (JeTextVyplnen())
+            if (IsTextFilled())
             {
                 ConfirmButton.IsEnabled = true;
             }
@@ -56,13 +58,13 @@ namespace SemPrace.Dialog
 
         private void JmenoTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (JeTextVyplnen())
+            if (IsTextFilled())
             {
                 ConfirmButton.IsEnabled = true;
             }
             else { ConfirmButton.IsEnabled = false; }
         }
-        private bool JeTextVyplnen()
+        private bool IsTextFilled()
         {
             foreach (var control in grid.Children)
             {

@@ -23,7 +23,11 @@ namespace SemPrace.Dialog
         public String Prijmeni { get; set; }
         public DialogOsobaPridat()
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
+            ConfirmButton.IsEnabled = false;
+            Jmeno = String.Empty;
+            Prijmeni = String.Empty;
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
@@ -42,7 +46,7 @@ namespace SemPrace.Dialog
 
         private void PrijmeniTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (JeTextVyplnen())
+            if (IsTextFilled())
             {
                 ConfirmButton.IsEnabled = true;
             }
@@ -51,13 +55,13 @@ namespace SemPrace.Dialog
 
         private void JmenoTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (JeTextVyplnen())
+            if (IsTextFilled())
             {
                 ConfirmButton.IsEnabled = true;
             }
             else { ConfirmButton.IsEnabled = false; }
         }
-        private bool JeTextVyplnen()
+        private bool IsTextFilled()
         {
             foreach (var control in grid.Children)
             {

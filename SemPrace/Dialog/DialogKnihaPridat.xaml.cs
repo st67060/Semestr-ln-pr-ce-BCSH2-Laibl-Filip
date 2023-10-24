@@ -24,15 +24,18 @@ namespace SemPrace.Dialog
         public int RokVydani { get; set; }
         public DialogKnihaPridat()
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            InitializeComponent();
             Nazev = String.Empty;
             Autor = String.Empty;
             RokVydani = int.MinValue;
-            InitializeComponent();
+            ConfirmButton.IsEnabled = false;
+            
         }
 
         private void NazevTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (JeTextVyplnen())
+            if (IsTextFilled())
             {
                 ConfirmButton.IsEnabled = true;
             }
@@ -41,16 +44,17 @@ namespace SemPrace.Dialog
 
         private void RokVydaniTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (JeTextVyplnen())
+            if (IsTextFilled() )
             {
                 ConfirmButton.IsEnabled = true;
             }
             else { ConfirmButton.IsEnabled = false; }
+
         }
 
         private void AutorTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (JeTextVyplnen())
+            if (IsTextFilled())
             {
                 ConfirmButton.IsEnabled = true;
             }
@@ -72,7 +76,7 @@ namespace SemPrace.Dialog
             DialogResult = true;
             Close();
         }
-        private bool JeTextVyplnen()
+        private bool IsTextFilled()
         {
             foreach (var control in grid.Children)
             {
@@ -83,8 +87,44 @@ namespace SemPrace.Dialog
                         return false;
                     }
                 }
+                
+            }
+            if (!IsNumeric(RokVydaniTextBox.Text)) {
+            return false;
             }
             return true;
+        }
+
+        private void RokVydaniTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            string newText = ((TextBox)sender).Text + e.Text;
+
+            if (!IsNumeric(newText))
+            {
+                e.Handled = true; 
+            }
+          
+        }
+        private bool IsNumeric(string text)
+        {
+            return int.TryParse(text, out _);
+        }
+
+        private void RokVydaniTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.V && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void RokVydaniTextBox_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (IsTextFilled())
+            {
+                ConfirmButton.IsEnabled = true;
+            }
+            else { ConfirmButton.IsEnabled = false; }
         }
     }
 }

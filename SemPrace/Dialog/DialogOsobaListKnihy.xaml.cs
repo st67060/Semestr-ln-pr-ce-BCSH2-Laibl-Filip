@@ -22,7 +22,7 @@ namespace SemPrace.Dialog
     {
         public DialogOsobaListKnihy(Osoba osoba)
         {
-            
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
             listViewKniha.ItemsSource = osoba.HistorieVypujcenychKnih;
         }

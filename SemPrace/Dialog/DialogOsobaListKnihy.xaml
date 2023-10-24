@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SemPrace.Dialog"
         mc:Ignorable="d"
-        Title="DialogOsobaListKnihy" Height="601" Width="480">
+        Title="DialogOsobaListKnihy" Height="601" Width="480" WindowStyle="ToolWindow">
     <Grid Width="480" Height="600">
         <Grid.RowDefinitions>
             <RowDefinition Height="107*"/>
             <RowDefinition Height="193*"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="listViewKniha" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,2,0,0" SelectionMode="Single" RenderTransformOrigin="0.5,0.5" Width="480" HorizontalAlignment="Center" Grid.RowSpan="2" Height="456" VerticalAlignment="Top">
+        <ListView x:Name="listViewKniha" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,142" SelectionMode="Single" RenderTransformOrigin="0.5,0.5" Width="480" HorizontalAlignment="Center" Grid.RowSpan="2" BorderThickness="0,0,0,0" Background="#FFF7ECD8" Height="456" VerticalAlignment="Bottom">
             <ListView.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -51,7 +51,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="ConfirmButton" Content="Ok" HorizontalAlignment="Center" Margin="0,274,0,0" Grid.Row="1" VerticalAlignment="Top" Height="36" Width="120" Click="ConfirmButton_Click"/>
+        <Button x:Name="ConfirmButton" Content="Ok" HorizontalAlignment="Center" Margin="0,274,0,0" Grid.Row="1" VerticalAlignment="Top" Height="36" Width="120" Click="ConfirmButton_Click" Background="#FFFBEE99" BorderThickness="0,0,0,0"/>
 
     </Grid>
 </Window>

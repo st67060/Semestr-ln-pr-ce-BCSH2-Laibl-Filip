@@ -15,29 +15,32 @@ using System.Windows.Shapes;
 
 namespace SemPrace.Dialog
 {
-    /// <summary>
-    /// Interakční logika pro DialogKnihaEdit.xaml
-    /// </summary>
+
     public partial class DialogKnihaEdit : Window
     {
         public String Nazev { get; set; }
         public String Autor { get; set; }
         public int RokVydani { get; set; }
+
         public DialogKnihaEdit(Kniha kniha)
+
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            InitializeComponent();
             Nazev = kniha.Nazev;
             Autor = kniha.Autor;
             RokVydani = kniha.RokVydani;
-            InitializeComponent();
-            NazevTextBox.Text = kniha.Nazev;
-            RokVydaniTextBox.Text = kniha.RokVydani + "";
-            AutorTextBox.Text = kniha.Autor;
+            ConfirmButton.IsEnabled = false;
+            NazevTextBox.Text = Nazev;
+            RokVydaniTextBox.Text = RokVydani.ToString();
+            AutorTextBox.Text = Autor;
+
 
         }
 
         private void NazevTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (JeTextVyplnen())
+            if (IsTextFilled())
             {
                 ConfirmButton.IsEnabled = true;
             }
@@ -46,7 +49,7 @@ namespace SemPrace.Dialog
 
         private void RokVydaniTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (JeTextVyplnen())
+            if (IsTextFilled())
             {
                 ConfirmButton.IsEnabled = true;
             }
@@ -55,7 +58,7 @@ namespace SemPrace.Dialog
 
         private void AutorTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (JeTextVyplnen())
+            if (IsTextFilled())
             {
                 ConfirmButton.IsEnabled = true;
             }
@@ -77,7 +80,14 @@ namespace SemPrace.Dialog
             DialogResult = true;
             Close();
         }
-        private bool JeTextVyplnen()
+        
+        private bool IsNumeric(string text)
+        {
+            return int.TryParse(text, out _);
+        }
+
+        
+        private bool IsTextFilled()
         {
             foreach (var control in grid.Children)
             {
@@ -89,7 +99,23 @@ namespace SemPrace.Dialog
                     }
                 }
             }
+            if (!IsNumeric(RokVydaniTextBox.Text))
+            {
+                return false;
+            }
+
             return true;
+        }
+
+        private void RokVydaniTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            string newText = ((TextBox)sender).Text + e.Text;
+
+            if (!IsNumeric(newText))
+            {
+                e.Handled = true;
+            }
+
         }
     }
 }

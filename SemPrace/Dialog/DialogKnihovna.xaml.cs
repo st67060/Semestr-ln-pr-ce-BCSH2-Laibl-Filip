@@ -14,28 +14,28 @@ using System.Windows.Shapes;
 
 namespace SemPrace.Dialog
 {
-    /// <summary>
-    /// Interakční logika pro DialogKnihovna.xaml
-    /// </summary>
+
     public partial class DialogKnihovna : Window
     {
         public String Nazev { get; set; }
-        public String Lokalita {  get; set; }   
+        public String Lokalita { get; set; }
         public DialogKnihovna()
         {
+
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            InitializeComponent();
             Nazev = null;
             Lokalita = null;
-            InitializeComponent();
             ConfirmButton.IsEnabled = false;
 
-            
+
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
-            
-             Nazev = NameTextBox.Text;
-             Lokalita = LokalitaTextBox.Text;
+
+            Nazev = NameTextBox.Text;
+            Lokalita = LokalitaTextBox.Text;
             DialogResult = true;
             Close();
         }
@@ -44,27 +44,28 @@ namespace SemPrace.Dialog
         {
             DialogResult = false;
             Close();
-            
+
         }
 
         private void NameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (JeTextVyplnen()) {
-                ConfirmButton.IsEnabled = true;
-            }
-            else { ConfirmButton.IsEnabled = false; }
-        }
-        
-
-        private void LokalitaTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (JeTextVyplnen())
+            if (IsTextFilled())
             {
                 ConfirmButton.IsEnabled = true;
             }
             else { ConfirmButton.IsEnabled = false; }
         }
-        private bool JeTextVyplnen()
+
+
+        private void LokalitaTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (IsTextFilled())
+            {
+                ConfirmButton.IsEnabled = true;
+            }
+            else { ConfirmButton.IsEnabled = false; }
+        }
+        private bool IsTextFilled()
         {
             foreach (var control in grid.Children)
             {

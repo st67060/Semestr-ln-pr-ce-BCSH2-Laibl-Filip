@@ -25,11 +25,13 @@ namespace SemPrace.Dialog
 
         public DialogKnihovnaEdit(Knihovna knihovna)
         {
-            Nazev = null;
-            Lokalita = null;
+            
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
-            NameTextBox.Text = knihovna.Nazev;
-            LokalitaTextBox.Text = knihovna.Lokalita;
+            Nazev = knihovna.Nazev;
+            Lokalita = knihovna.Lokalita;
+            NameTextBox.Text = Nazev;
+            LokalitaTextBox.Text = Lokalita;
             ConfirmButton.IsEnabled = false;
         }
 
@@ -43,7 +45,7 @@ namespace SemPrace.Dialog
 
         private void NameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (JeTextVyplnen())
+            if (IsTextFilled())
             {
                 ConfirmButton.IsEnabled = true;
             }
@@ -52,13 +54,13 @@ namespace SemPrace.Dialog
 
         private void LokalitaTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (JeTextVyplnen())
+            if (IsTextFilled())
             {
                 ConfirmButton.IsEnabled = true;
             }
             else { ConfirmButton.IsEnabled = false; }
         }
-        private bool JeTextVyplnen()
+        private bool IsTextFilled()
         {
             foreach (var control in grid.Children)
             {
@@ -71,6 +73,12 @@ namespace SemPrace.Dialog
                 }
             }
             return true;
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            Close();
         }
     }
 }
