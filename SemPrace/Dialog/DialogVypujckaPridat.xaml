@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:SemPrace.Dialog"
         mc:Ignorable="d"
         Title="DialogVypujckaPridat" Height="559" Width="708">
+   
     <Grid x:Name="grid" Width="700" Height="500" HorizontalAlignment="Center" Margin="0,0,0,21" VerticalAlignment="Bottom">
+        
         <ListView x:Name="listViewOsoba" d:ItemsSource="{d:SampleData ItemCount=5}" Width="280" Height="500" RenderTransformOrigin="0.136,0.495" Margin="10,0,410,0" SelectionChanged="listViewOsoba_SelectionChanged" Background="#FFC5C3C3">
             <ListView.View>
                 <GridView>
@@ -17,25 +19,11 @@
             </ListView.View>
         </ListView>
         <Calendar x:Name="calendarIn" HorizontalAlignment="Left" Margin="295,82,0,0" VerticalAlignment="Top" Width="180" Height="180" DisplayDateChanged="calendarIn_DisplayDateChanged" SelectedDatesChanged="calendarIn_SelectedDatesChanged">
-            <Calendar.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFE4EAF0"/>
-                    <GradientStop Color="#FFECF0F4" Offset="0.16"/>
-                    <GradientStop Color="#FFFCFCFD" Offset="0.16"/>
-                    <GradientStop Color="#FFFFF1CA" Offset="1"/>
-                </LinearGradientBrush>
-            </Calendar.Background>
+           
         </Calendar>
-        <Calendar x:Name="calendarOut" HorizontalAlignment="Left" Margin="497,82,0,0" VerticalAlignment="Top" Width="180" Height="180" DisplayDateChanged="calendarOut_DisplayDateChanged" SelectedDatesChanged="calendarOut_SelectedDatesChanged">
-            <Calendar.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFE4EAF0"/>
-                    <GradientStop Color="#FFECF0F4" Offset="0.16"/>
-                    <GradientStop Color="#FFFCFCFD" Offset="0.16"/>
-                    <GradientStop Color="#FFC6D4FF" Offset="1"/>
-                </LinearGradientBrush>
-            </Calendar.Background>
-        </Calendar>
+        <Calendar x:Name="calendarOut" HorizontalAlignment="Left" Margin="497,82,0,0" VerticalAlignment="Top" Width="180" Height="180" DisplayDateChanged="calendarOut_DisplayDateChanged" SelectedDatesChanged="calendarOut_SelectedDatesChanged"/>
+
+       
         <Label Content="Vyberte datum začátku" HorizontalAlignment="Left" Margin="319,54,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Vyberte datum konce" HorizontalAlignment="Left" Margin="525,54,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Button x:Name="cancelButton" Content="Zrušit" HorizontalAlignment="Left" Margin="326,441,0,0" VerticalAlignment="Top" Height="30" Width="125" Click="cancelButton_Click" Background="#FFF5C3C3" BorderThickness="0,0,0,0" FontWeight="Bold"/>
@@ -44,4 +32,25 @@
         <TextBlock x:Name="textBlockOut" HorizontalAlignment="Left" Margin="551,267,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="99" Height="25" FontSize="16"/>
 
     </Grid>
+    <Window.Resources>
+        <Style TargetType="CalendarItem">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+        </Style>
+        <Style TargetType="CalendarDayButton">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Foreground" Value="#333333" />
+            <Style.Triggers>
+                <Trigger Property="IsToday" Value="True">
+                    <Setter Property="Background" Value="#2196F3" />
+                    <Setter Property="Foreground" Value="White" />
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#FF5252" />
+                    <Setter Property="Foreground" Value="White" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
 </Window>

@@ -6,8 +6,7 @@
     xmlns:local="clr-namespace:SemPrace"
     mc:Ignorable="d"
     Title="MainWindow" Height="700" Width="1300" WindowStyle="None">
-
-    <Grid>
+    <Grid Background="White">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="700"/>
@@ -17,7 +16,9 @@
             <ColumnDefinition Width="374"/>
         </Grid.ColumnDefinitions>
 
-        <ListView x:Name="listViewKniha" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="190,118,255,62" IsSynchronizedWithCurrentItem="False" SelectionMode="Single" RenderTransformOrigin="0.5,0.5" SelectionChanged="listViewKniha_SelectionChanged" Background="#FFD4AC7C" Foreground="Black" BorderThickness="0,0,0,0" Height="520" Width="481">
+
+        <ListView x:Name="listViewKniha" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="221,118,274,62" IsSynchronizedWithCurrentItem="False" SelectionMode="Single" RenderTransformOrigin="0.5,0.5" SelectionChanged="listViewKniha_SelectionChanged" Background="White" Foreground="#575A5D" BorderThickness="0.1,0,0.1,0" Height="520" Width="431">
+
             <ListView.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -27,14 +28,43 @@
                 </TransformGroup>
             </ListView.RenderTransform>
             <ListView.View>
+
                 <GridView>
-                    <GridViewColumn Header="Název" DisplayMemberBinding="{Binding Nazev}" Width="90"/>
-                    <GridViewColumn Header="Autor" DisplayMemberBinding="{Binding Autor}" Width="100"/>
-                    <GridViewColumn Header="Rok" DisplayMemberBinding="{Binding RokVydani}" Width="65"/>
-                    <GridViewColumn Header="vypůjčena" Width="60">
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="GridViewColumnHeader">
+                            <Setter Property="FontFamily" Value="Segoe UI" />
+                            <Setter Property="FontSize" Value="13" />
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="Foreground" Value="Black" />
+                            <Setter Property="BorderBrush" Value="Transparent" />
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="VerticalContentAlignment" Value="Center" />
+                            <Setter Property="Height" Value="25" />
+                            <Setter Property="FontWeight" Value="Bold" />
+
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Width="30">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock>
+                                <Image Source="/Assets/BookIcon.png" Width="16" Height="16" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="145" Header="Název">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Nazev}"  />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Autor" DisplayMemberBinding="{Binding Autor}" Width="120"/>
+                    <GridViewColumn Header="Rok" DisplayMemberBinding="{Binding RokVydani}" Width="60"/>
+                    <GridViewColumn Header="vypůjčena" Width="70">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock LineHeight="20">
                                     <TextBlock.Style>
                                         <Style TargetType="TextBlock">
                                             <Style.Triggers>
@@ -52,74 +82,175 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Vypůjčení" DisplayMemberBinding="{Binding DatumVypujceni}" Width="80"/>
-                    <GridViewColumn Header="Vrácení" DisplayMemberBinding="{Binding DatumNavraceni}" Width="80"/>
                 </GridView>
             </ListView.View>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="FontFamily" Value="Segoe UI" />
+                    <Setter Property="FontSize" Value="13" />
+                    <Setter Property="Background" Value="#F9F9F9" />
+                    <Setter Property="Foreground" Value="#575A5D" />
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Margin" Value="0,0,0,7" />
+                    <Setter Property="Padding" Value="5" />
+                    <Setter Property="Height" Value="30" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FFE0E0E0" />
+                            <Setter Property="Foreground" Value="#575A5D" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
-        <ListView x:Name="listViewOsoba" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="676,118,24,60" SelectionMode="Single" SelectionChanged="listViewOsoba_SelectionChanged" Background="#FFDACFC2" Foreground="Black" BorderThickness="0,0,0,0" Width="226" Height="520">
+        <ListView x:Name="listViewOsoba" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="659,119,11,61" SelectionMode="Single" SelectionChanged="listViewOsoba_SelectionChanged" Background="White" Foreground="#575A5D" BorderThickness="0.1,0,0,0" Width="256" Height="520">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Přijmení" DisplayMemberBinding="{Binding Prijmeni}" Width="70"/>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="GridViewColumnHeader">
+                            <Setter Property="FontFamily" Value="Segoe UI" />
+                            <Setter Property="FontSize" Value="13" />
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="Foreground" Value="Black" />
+                            <Setter Property="BorderBrush" Value="Transparent" />
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="VerticalContentAlignment" Value="Center" />
+                            <Setter Property="Height" Value="25" />
+                            <Setter Property="FontWeight" Value="Bold" />
+
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Width="30">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="/Assets/UserIcon.png" Width="16" Height="16" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Jméno" DisplayMemberBinding="{Binding Jmeno}" Width="70"/>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding UzivatelskeCislo}" Width="80
-                                    "/>
+                    <GridViewColumn Header="Přijmení" DisplayMemberBinding="{Binding Prijmeni}" Width="70"/>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding UzivatelskeCislo}" Width="80"/>
                 </GridView>
+
             </ListView.View>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="FontFamily" Value="Segoe UI" />
+                    <Setter Property="FontSize" Value="13" />
+                    <Setter Property="Background" Value="#F9F9F9" />
+                    <Setter Property="Foreground" Value="#575A5D" />
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Margin" Value="0,0,0,7" />
+                    <Setter Property="Padding" Value="5" />
+                    <Setter Property="Height" Value="30" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FFE0E0E0" />
+                            <Setter Property="Foreground" Value="#575A5D" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
-        <ListView x:Name="listViewKnihovna" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="9,118,741,62" SelectionChanged="listViewKnihovna_SelectionChanged" SelectionMode="Single" MouseLeftButtonUp="listViewKnihovna_MouseLeftButtonUp" Background="#FFD6D8CA" Foreground="Black" BorderThickness="0,0,0,0" Width="176" Height="520">
+        <ListView x:Name="listViewKnihovna" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="9,118,711,62" SelectionChanged="listViewKnihovna_SelectionChanged" SelectionMode="Single" MouseLeftButtonUp="listViewKnihovna_MouseLeftButtonUp" Background="White" Foreground="#575A5D" BorderThickness="0,0,0.1,0" Width="206" Height="520">
             <ListView.View>
                 <GridView>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="GridViewColumnHeader">
+                            <Setter Property="FontFamily" Value="Segoe UI" />
+                            <Setter Property="FontSize" Value="13" />
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="Foreground" Value="Black" />
+                            <Setter Property="BorderBrush" Value="Transparent" />
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="VerticalContentAlignment" Value="Center" />
+                            <Setter Property="Height" Value="25" />
+                            <Setter Property="FontWeight" Value="Bold" />
+
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Width="30">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="/Assets/LibraryIcon.png" Width="16" Height="16" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Název" DisplayMemberBinding="{Binding Nazev}" Width="85"/>
                     <GridViewColumn Header="Město" DisplayMemberBinding="{Binding Lokalita}" Width="85"/>
                 </GridView>
+
             </ListView.View>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="FontFamily" Value="Segoe UI" />
+                    <Setter Property="FontSize" Value="13" />
+                    <Setter Property="Background" Value="#F9F9F9" />
+                    <Setter Property="Foreground" Value="#575A5D" />
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Margin" Value="0,0,0,7" />
+                    <Setter Property="Padding" Value="5" />
+                    <Setter Property="Height" Value="30" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FFE0E0E0" />
+                            <Setter Property="Foreground" Value="#575A5D" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
-        <Label Content="Seznam Knih" HorizontalAlignment="Left" Margin="377,89,0,0" VerticalAlignment="Top" Height="26" Width="122" FontSize="14" FontWeight="Bold"/>
-        <Label Content="Seznam Knihoven" HorizontalAlignment="Left" Margin="30,89,0,0" VerticalAlignment="Top" Height="26" Width="134" FontSize="14" FontWeight="Bold"/>
-        <Label x:Name="seznamOsobLabel" Content="Seznam Osob" HorizontalAlignment="Left" Margin="742,89,0,0" VerticalAlignment="Top" Height="26" Width="120" FontSize="14" FontWeight="Bold"/>
+        <Image Source="/Assets/BooksIcon.png" Width="48" Height="48" Margin="400,65,478,587" />
+        <Image Source="/Assets/BranchIcon.png" Width="48" Height="48" Margin="88,65,790,587" />
+        <Image Source="/Assets/UsersIcon.png" Width="48" Height="48" Margin="774,65,104,587" />
         <Button x:Name="buttonPridatKnihovna" Content="Přidat" HorizontalAlignment="Center" Margin="0,111,0,0" VerticalAlignment="Top" Width="134" Click="buttonPridatKnihovna_Click" Grid.Column="1" Height="30" Background="#FFD6D8CA" BorderThickness="0,0,0,0" FontWeight="Bold"/>
         <Separator HorizontalAlignment="Center" Margin="0,232,0,0" VerticalAlignment="Top" Height="24" Width="328" Grid.Column="1"/>
-        <Separator HorizontalAlignment="Center" Margin="0,440,0,0" VerticalAlignment="Top" Height="24" Width="328" Grid.Column="1"/>
-        <Label Content="Knihovna" HorizontalAlignment="Left" Margin="144,69,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="94" FontSize="14" FontWeight="Bold"/>
-        <Label Content="Kniha" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="62" FontSize="14" FontWeight="Bold" Margin="0,261,0,0"/>
-        <Label Content="Osoba" HorizontalAlignment="Left" Margin="156,464,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="70" FontSize="14" FontWeight="Bold"/>
-        <Button x:Name="buttonUpravitKnihovna" Content="Upravit" HorizontalAlignment="Center" Margin="0,154,0,0" VerticalAlignment="Top" Width="134" Click="buttonUpravitKnihovna_Click" Grid.Column="1" Height="30" Background="#FFD6D8CA" BorderThickness="0,0,0,0" FontWeight="Bold"/>
-        <Button x:Name="buttonOdebratKnihovna" Content="Odebrat" HorizontalAlignment="Center" Margin="0,197,0,0" VerticalAlignment="Top" Width="134" Click="buttonOdebratKnihovna_Click" Grid.Column="1" Height="30" Background="#FFD6D8CA" BorderThickness="0,0,0,0" FontWeight="Bold"/>
-        <Button x:Name="buttonPridatKniha" Content="Přidat" HorizontalAlignment="Left" Margin="22,312,0,0" VerticalAlignment="Top" Width="135" Click="buttonPridatKniha_Click" Grid.Column="1" Height="30" Background="#FFD4AC7C" BorderThickness="0,0,0,0" FontWeight="Bold"/>
-        <Button x:Name="buttonUpravitKniha" Content="Upravit" HorizontalAlignment="Left" Margin="23,354,0,0" VerticalAlignment="Top" Width="135" Click="buttonUpravitKniha_Click" Grid.Column="1" Height="30" Background="#FFD4AC7C" BorderThickness="0,0,0,0" FontWeight="Bold"/>
-        <Button x:Name="buttonOdebratKniha" Content="Odebrat" HorizontalAlignment="Left" Margin="22,397,0,0" VerticalAlignment="Top" Width="135" Click="buttonOdebratKniha_Click" Grid.Column="1" Height="30" Background="#FFD4AC7C" BorderThickness="0,0,0,0" FontWeight="Bold"/>
-        <Button x:Name="buttonPridatOsoba" Content="Přidat" HorizontalAlignment="Left" Margin="22,513,0,0" VerticalAlignment="Top" Width="135" Grid.Column="1" Height="30" Click="buttonPridatOsoba_Click" Background="#FFDACFC2" BorderThickness="0,0,0,0" FontWeight="Bold"/>
-        <Button x:Name="buttonUpravitOsoba" Content="Upravit" HorizontalAlignment="Left" Margin="22,553,0,0" VerticalAlignment="Top" Width="135" Grid.Column="1" Height="30" Click="buttonUpravitOsoba_Click" Background="#FFDACFC2" BorderThickness="0,0,0,0" FontWeight="Bold"/>
-        <Button x:Name="buttonOdebratOsoba" Content="Odebrat" HorizontalAlignment="Left" Margin="22,596,0,0" VerticalAlignment="Top" Width="135" Grid.Column="1" Height="30" Click="buttonOdebratOsoba_Click" Background="#FFDACFC2" BorderThickness="0,0,0,0" FontWeight="Bold"/>
-        <Button x:Name="buttonPridatVyp" Content="Přiřadit Výpůjčku" HorizontalAlignment="Left" Margin="198,312,0,0" VerticalAlignment="Top" Width="135" Click="buttonPridatVyp_Click" Grid.Column="1" Height="30" Background="#FFD4AC7C" BorderThickness="0,0,0,0" FontWeight="Bold"/>
-        <Button x:Name="buttonUpravVyp" Content="Prodloužit Výpujčku" HorizontalAlignment="Left" Margin="198,354,0,0" VerticalAlignment="Top" Width="135" Click="buttonUpravVyp_Click" Grid.Column="1" Height="30" Background="#FFD4AC7C" BorderThickness="0,0,0,0" FontWeight="Bold"/>
-        <Button x:Name="buttonOdeberVyp" Content="Odebrat Výpujčku" HorizontalAlignment="Left" Margin="198,397,0,0" VerticalAlignment="Top" Width="135" Click="buttonOdeberVyp_Click" Grid.Column="1" Height="30" Background="#FFD4AC7C" BorderThickness="0,0,0,0" FontWeight="Bold"/>
-        <Button x:Name="buttonZobrazVypKnihyOsoba" Content="Zobrazit vypůjčené Knihy" HorizontalAlignment="Left" Margin="191,553,0,0" VerticalAlignment="Top" Width="153" Height="30" Grid.Column="1" Click="buttonZobrazVypKnihyOsoba_Click" Background="#FFDACFC2" BorderThickness="0,0,0,0" FontWeight="Bold"/>
-        <ComboBox x:Name="comboBoxKniha" HorizontalAlignment="Left" Margin="555,646,0,0" VerticalAlignment="Top" Width="116" Height="20" SelectionChanged="comboBoxKniha_SelectionChanged">
-            <ComboBoxItem Content="Výchozí"/>
+        <Label Content="Knihovna" HorizontalAlignment="Left" Margin="144,69,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="94" FontSize="14" FontWeight="Bold" FontFamily="Segoe UI"/>
+        <Label Content="Kniha" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="62" FontSize="14" FontWeight="Bold" Margin="0,261,0,0" FontFamily="Segoe UI"/>
+        <Label Content="Osoba" HorizontalAlignment="Left" Margin="156,464,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="70" FontSize="14" FontWeight="Bold" FontFamily="Segoe UI"/>
+        <Button x:Name="buttonUpravitKnihovna" Content="Upravit" HorizontalAlignment="Center" Margin="0,154,0,0" VerticalAlignment="Top" Width="134" Click="buttonUpravitKnihovna_Click" Grid.Column="1" Height="30" Background="#FFD6D8CA" BorderThickness="0,0,0,0" FontWeight="Bold" FontFamily="Segoe UI"/>
+        <Button x:Name="buttonOdebratKnihovna" Content="Odebrat" HorizontalAlignment="Center" Margin="0,197,0,0" VerticalAlignment="Top" Width="134" Click="buttonOdebratKnihovna_Click" Grid.Column="1" Height="30" Background="#FFD6D8CA" BorderThickness="0,0,0,0" FontWeight="Bold" FontFamily="Segoe UI"/>
+        <Button x:Name="buttonPridatKniha" Content="Přidat" HorizontalAlignment="Left" Margin="22,312,0,0" VerticalAlignment="Top" Width="135" Click="buttonPridatKniha_Click" Grid.Column="1" Height="30" Background="#FFDACFC2" BorderThickness="0,0,0,0" FontWeight="Bold" FontFamily="Segoe UI"/>
+        <Button x:Name="buttonUpravitKniha" Content="Upravit" HorizontalAlignment="Left" Margin="23,354,0,0" VerticalAlignment="Top" Width="135" Click="buttonUpravitKniha_Click" Grid.Column="1" Height="30" Background="#FFDACFC2" BorderThickness="0,0,0,0" FontWeight="Bold" FontFamily="Segoe UI"/>
+        <Button x:Name="buttonOdebratKniha" Content="Odebrat" HorizontalAlignment="Left" Margin="22,397,0,0" VerticalAlignment="Top" Width="135" Click="buttonOdebratKniha_Click" Grid.Column="1" Height="30" Background="#FFDACFC2" BorderThickness="0,0,0,0" FontWeight="Bold" FontFamily="Segoe UI"/>
+        <Button x:Name="buttonPridatOsoba" Content="Přidat" HorizontalAlignment="Left" Margin="22,513,0,0" VerticalAlignment="Top" Width="135" Grid.Column="1" Height="30" Click="buttonPridatOsoba_Click" Background="#FFC5C5C5" BorderThickness="0,0,0,0" FontWeight="Bold" FontFamily="Segoe UI"/>
+        <Button x:Name="buttonUpravitOsoba" Content="Upravit" HorizontalAlignment="Left" Margin="22,553,0,0" VerticalAlignment="Top" Width="135" Grid.Column="1" Height="30" Click="buttonUpravitOsoba_Click" Background="#FFC5C5C5" BorderThickness="0,0,0,0" FontWeight="Bold" FontFamily="Segoe UI"/>
+        <Button x:Name="buttonOdebratOsoba" Content="Odebrat" HorizontalAlignment="Left" Margin="22,596,0,0" VerticalAlignment="Top" Width="135" Grid.Column="1" Height="30" Click="buttonOdebratOsoba_Click" Background="#FFC5C5C5" BorderThickness="0,0,0,0" FontWeight="Bold" FontFamily="Segoe UI"/>
+        <Button x:Name="buttonPridatVyp" Content="Přiřadit Výpůjčku" HorizontalAlignment="Left" Margin="198,312,0,0" VerticalAlignment="Top" Width="135" Click="buttonPridatVyp_Click" Grid.Column="1" Height="30" Background="#FFDACFC2" BorderThickness="0,0,0,0" FontWeight="Bold" FontFamily="Segoe UI"/>
+        <Button x:Name="buttonUpravVyp" Content="Prodloužit Výpujčku" HorizontalAlignment="Left" Margin="198,354,0,0" VerticalAlignment="Top" Width="135" Click="buttonUpravVyp_Click" Grid.Column="1" Height="30" Background="#FFDACFC2" BorderThickness="0,0,0,0" FontWeight="Bold" FontFamily="Segoe UI"/>
+        <Button x:Name="buttonOdeberVyp" Content="Odebrat Výpujčku" HorizontalAlignment="Left" Margin="198,397,0,0" VerticalAlignment="Top" Width="135" Click="buttonOdeberVyp_Click" Grid.Column="1" Height="30" Background="#FFDACFC2" BorderThickness="0,0,0,0" FontWeight="Bold" FontFamily="Segoe UI"/>
+        <Button x:Name="buttonZobrazVypKnihyOsoba" Content="Zobrazit vypůjčené Knihy" HorizontalAlignment="Left" Margin="191,553,0,0" VerticalAlignment="Top" Width="153" Height="30" Grid.Column="1" Click="buttonZobrazVypKnihyOsoba_Click" Background="#FFC5C5C5" BorderThickness="0,0,0,0" FontWeight="Bold" FontFamily="Segoe UI"/>
+        <ComboBox x:Name="comboBoxKniha" HorizontalAlignment="Left" Margin="534,644,0,0" VerticalAlignment="Top" Width="116" Height="20" SelectionChanged="comboBoxKniha_SelectionChanged" BorderThickness="0,0,0,0" FontFamily="Segoe UI">
+            <ComboBoxItem Content="Výchozí" FontFamily="Segoe UI"/>
             <ComboBoxItem Content="Vypůjčené knihy"/>
             <ComboBoxItem Content="Nevypůjčené knihy"/>
             <ComboBoxItem Content="Název"/>
             <ComboBoxItem Content="Autor"/>
             <ComboBoxItem Content="Rok Vydání"/>
         </ComboBox>
-        <ComboBox x:Name="comboBoxOsoba" HorizontalAlignment="Left" Margin="788,644,0,0" VerticalAlignment="Top" Width="114" Height="20" SelectionChanged="comboBoxOsoba_SelectionChanged">
+        <ComboBox x:Name="comboBoxOsoba" HorizontalAlignment="Left" Margin="802,644,0,0" VerticalAlignment="Top" Width="114" Height="20" SelectionChanged="comboBoxOsoba_SelectionChanged" BorderThickness="0,0,0,0">
             <ComboBoxItem Content="Výchozí"/>
             <ComboBoxItem Content="Jméno"/>
             <ComboBoxItem Content="Příjmení"/>
         </ComboBox>
-        <TextBox x:Name="HledatListViewKniha" Text="Hledat..." Foreground="Gray" GotFocus="SearchTextBox_GotFocus" LostFocus="SearchTextBox_LostFocus" HorizontalAlignment="Left" Margin="190,644,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" Height="20" BorderThickness="0,0,0,0" TextChanged="HledatListViewKniha_TextChanged" FontSize="14"/>
-        <TextBox x:Name="HledatListViewOsoba" Text="Hledat..." Foreground="Gray" GotFocus="SearchTextBox2_GotFocus" LostFocus="SearchTextBox2_LostFocus" HorizontalAlignment="Left" Margin="676,644,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" Height="20" BorderThickness="0,0,0,0" TextChanged="HledatListViewOsoba_TextChanged" FontSize="14"/>
+        <TextBox x:Name="HledatListViewKniha" Text="Hledat..." Foreground="Gray" GotFocus="SearchTextBox_GotFocus" LostFocus="SearchTextBox_LostFocus" HorizontalAlignment="Left" Margin="219,644,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" Height="20" BorderThickness="0,0,0,0" TextChanged="HledatListViewKniha_TextChanged" FontSize="14"/>
+        <TextBox x:Name="HledatListViewOsoba" Text="Hledat..." Foreground="Gray" GotFocus="SearchTextBox2_GotFocus" LostFocus="SearchTextBox2_LostFocus" HorizontalAlignment="Left" Margin="659,644,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" Height="20" BorderThickness="0,0,0,0" TextChanged="HledatListViewOsoba_TextChanged" FontSize="14"/>
         <ToolBar HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="463" RenderTransformOrigin="0.518,0.551" Background="White">
             <Button x:Name="buttonGeneKnihovna" Content="Generovat Knihovnu" Width="144" VerticalAlignment="Top" Click="buttonGeneKnihovna_Click" />
             <Button x:Name="buttonGeneKniha" Content="Generovat Knihu" Width="133" VerticalAlignment="Top" Click="buttonGeneKniha_Click" />
             <Button x:Name="buttonGeneOsoba" Content="Generovat Osobu&#xD;&#xA;" HorizontalAlignment="Left" Width="127" Click="buttonGeneOsoba_Click"/>
 
         </ToolBar>
-        <Button Name="MinimizeButton" Content="_" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="20" Click="MinimizeButton_Click" Grid.Row="0" Grid.Column="1" Margin="314,0,0,0" FontFamily="Tw Cen MT" Background="#FFEFC871" BorderThickness="0,0,0,0"/>
-        <Button Name="CloseButton" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="20" Click="CloseButton_Click" Grid.Row="0" Grid.Column="1" Margin="344,0,0,0" FontFamily="Tw Cen MT" Background="#FFDA7A7A" BorderThickness="0,0,0,0" RenderTransformOrigin="0.567,0.6"/>
+        <Button Name="MinimizeButton" Content="_" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="20" Click="MinimizeButton_Click" Grid.Row="0" Grid.Column="1" Margin="314,0,0,0" FontFamily="Tw Cen MT" Background="#FFE8CE95" BorderThickness="0,0,0,0"/>
+        <Button Name="CloseButton" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="20" Click="CloseButton_Click" Grid.Row="0" Grid.Column="1" Margin="344,0,0,0" FontFamily="Tw Cen MT" Background="#FFE69A9A" BorderThickness="0,0,0,0" RenderTransformOrigin="0.567,0.6"/>
         <Button Grid.Column="1" Content="Button" HorizontalAlignment="Left" Margin="64,-50,0,0" VerticalAlignment="Top"/>
+        <Separator HorizontalAlignment="Center" Margin="0,454,0,0" VerticalAlignment="Top" Height="24" Width="328" Grid.Column="1"/>
 
     </Grid>
 

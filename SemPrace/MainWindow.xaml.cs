@@ -550,5 +550,7 @@ namespace SemPrace
             textBox.Text = "Hledat...";
             textBox.Foreground = Brushes.Gray;
         }
+
+       
     }
 }
