@@ -76,3 +76,6 @@ C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\ob
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\SemPrace.pdb
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\SemPrace.genruntimeconfig.cache
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\ref\SemPrace.dll
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\View\DialogConfirm.g.cs
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\View\DialogConfirm.baml

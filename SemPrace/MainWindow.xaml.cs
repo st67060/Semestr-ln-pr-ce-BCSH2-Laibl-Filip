@@ -480,7 +480,7 @@ namespace SemPrace
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            DialogConfirm dialog = new DialogConfirm();
+            View.DialogConfirm dialog = new View.DialogConfirm();
             bool? result = dialog.ShowDialog();
             if (result == true)
             {
@@ -523,11 +523,6 @@ namespace SemPrace
             db.SaveOsobaToDatabase(temp);
         }
 
-        private bool ShowConfirmDialog()
-        {
-            MessageBoxResult result = MessageBox.Show("Potvrdit", "Potvrdit", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            return result == MessageBoxResult.Yes;
-        }
         private void SetButtonsTo(bool boolean)
         {
             buttonOdebratKnihovna.IsEnabled = boolean;
