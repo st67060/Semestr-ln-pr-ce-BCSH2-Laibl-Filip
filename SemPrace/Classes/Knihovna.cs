@@ -28,7 +28,7 @@ namespace SemPrace.Classes
             }
         }
 
-        
+
         public string Lokalita
         {
             get { return lokalita; }
@@ -74,5 +74,5 @@ namespace SemPrace.Classes
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+
 }

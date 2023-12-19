@@ -128,7 +128,7 @@ namespace SemPrace.Classes
             DatumVypujceni = DateOnly.MinValue;
             DatumNavraceni = DateOnly.MinValue;
         }
-        //Metoda pro zadání výpujčky, datum je vygenerovan
+        //Metoda pro zadání výpujčky
         public void SetVypujcka(Osoba osoba)
         {
             if (this.Vypujceni)

@@ -29,5 +29,10 @@ namespace SemPrace.ViewModel
         {
             execute();
         }
+        public void RaiseCanExecuteChanged()
+        {
+            CommandManager.InvalidateRequerySuggested();
+        }
+
     }
 }

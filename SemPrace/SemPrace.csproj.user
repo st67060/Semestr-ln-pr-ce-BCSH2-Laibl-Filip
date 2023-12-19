@@ -37,6 +37,33 @@
     <Compile Update="View\DialogConfirm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\DialogKnihaAdd.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\DialogKnihaEdit.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\DialogKnihovnaAdd.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\DialogKnihovnaEdit.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\DialogOsobaAdd.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\DialogOsobaEdit.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\DialogOsobaKnihy.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\DialogVypujckaAdd.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Main.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Dialog\DialogConfirm.xaml">
@@ -66,10 +93,34 @@
     <Page Update="Dialog\DialogVypujckaPridat.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MainWindow.xaml">
+    <Page Update="View\DialogConfirm.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\DialogConfirm.xaml">
+    <Page Update="View\DialogKnihaAdd.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DialogKnihaEdit.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DialogKnihovnaAdd.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DialogKnihovnaEdit.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DialogOsobaAdd.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DialogOsobaEdit.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DialogOsobaKnihy.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DialogVypujckaAdd.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Main.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

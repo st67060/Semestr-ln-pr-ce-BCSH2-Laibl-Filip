@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="MainWindow.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Assets\BookIcon.png" />
     <None Remove="Assets\BooksIcon.png" />
     <None Remove="Assets\BookStoreIcon.png" />
@@ -16,6 +20,10 @@
     <None Remove="Assets\UserIcon.png" />
     <None Remove="Assets\UsersIcon.png" />
     <None Remove="database.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="MainWindow.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,10 +57,6 @@
     <PackageReference Include="SQLitePCLRaw.core" Version="2.1.6" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Model\" />
   </ItemGroup>
 
 </Project>

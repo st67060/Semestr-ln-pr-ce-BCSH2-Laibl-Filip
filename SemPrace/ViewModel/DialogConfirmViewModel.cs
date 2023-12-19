@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace SemPrace.ViewModel
 {
-    public class DialogConfirmViewModel : INotifyPropertyChanged
+    public class DialogConfirmViewModel : BaseViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -23,32 +23,21 @@ namespace SemPrace.ViewModel
 
         private void Confirm()
         {
-            RequestDialogResult?.Invoke(this, true);
-            RequestClose?.Invoke(this, EventArgs.Empty);
+           base.Confirm();
            
         }
 
         private void Cancel()
         {
-            RequestDialogResult?.Invoke(this, false);
-            RequestClose?.Invoke(this, EventArgs.Empty);
+            base.Cancel();
         }
+      
 
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public event EventHandler RequestClose;
-
-        private void Close()
-        {
-            if (RequestClose != null)
-            {
-                RequestClose(this, EventArgs.Empty);
-            }
-        }
-
-        public event EventHandler<bool> RequestDialogResult;
+        
 
     }
 }

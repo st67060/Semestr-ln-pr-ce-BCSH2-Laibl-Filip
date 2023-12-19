@@ -1,5 +1,7 @@
 ﻿using SemPrace.Classes;
 using SemPrace.Dialog;
+using SemPrace.Utility;
+using SemPrace.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -31,7 +33,7 @@ namespace SemPrace
 
         public MainWindow()
         {
-            knihovnyObs = db.LoadDataFromDatabase(); //Načte data z Databáze
+            //knihovnyObs = db.LoadDataFromDatabase(); //Načte data z Databáze
             WindowStartupLocation = WindowStartupLocation.CenterScreen; // Nastaví okno doprostřed obrazovky
             InitializeComponent();
             ResizeMode = ResizeMode.NoResize;
@@ -50,6 +52,7 @@ namespace SemPrace
 
             buttonOdebratKnihovna.IsEnabled = isAnyKnihaSelected;
             buttonUpravitKnihovna.IsEnabled = isAnyKnihaSelected;
+            buttonPridatKniha.IsEnabled = isAnyKnihaSelected;
             buttonPridatKniha.IsEnabled = isAnyKnihaSelected;
             buttonPridatOsoba.IsEnabled = isAnyKnihaSelected;
             buttonGeneKniha.IsEnabled = isAnyKnihaSelected;
@@ -152,13 +155,13 @@ namespace SemPrace
             int selectedIndex = listViewKnihovna.SelectedIndex;
 
             if (selectedIndex >= 0)
-            {
-                DialogKnihaPridat dialog = new DialogKnihaPridat();
+            {  DialogKnihaAddViewModel viewModel = new DialogKnihaAddViewModel();
+                View.DialogKnihaAdd dialog = new View.DialogKnihaAdd(viewModel);
                 bool? result = dialog.ShowDialog();
 
                 if (result == true)
                 {
-                    Kniha temp = new Kniha(dialog.Nazev, dialog.Autor, dialog.RokVydani);
+                    Kniha temp = new Kniha(viewModel.Nazev, viewModel.Autor, viewModel.RokVydani);
                     temp.Id = gt.GenerateUniqueId();
                     temp.IdKnihovna = knihovnyObs[selectedIndex].Id;
                     knihovnyObs[selectedIndex].AddKniha(temp);
@@ -172,14 +175,15 @@ namespace SemPrace
             Kniha temp = listViewKniha.SelectedItem as Kniha;
             if (temp != null)
             {
-                DialogKnihaEdit dialog = new DialogKnihaEdit(temp);
+                DialogKnihaEditViewModel viewModel = new DialogKnihaEditViewModel(temp);
+                View.DialogKnihaEdit dialog = new  View.DialogKnihaEdit(viewModel);
                 bool? result = dialog.ShowDialog();
 
                 if (result == true)
                 {
-                    temp.Nazev = dialog.Nazev;
-                    temp.Autor = dialog.Autor;
-                    temp.RokVydani = dialog.RokVydani;
+                    temp.Nazev = viewModel.Nazev;
+                    temp.Autor = viewModel.Autor;
+                    temp.RokVydani = viewModel.RokVydani;
                     db.SaveKnihaToDatabase(temp);
                 }
             }
@@ -496,7 +500,7 @@ namespace SemPrace
 
         private void buttonNactiData_Click(object sender, RoutedEventArgs e)
         {
-            knihovnyObs = db.LoadDataFromDatabase();
+            //knihovnyObs = db.LoadDataFromDatabase();
         }
 
 
