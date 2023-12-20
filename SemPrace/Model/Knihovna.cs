@@ -1,4 +1,4 @@
-﻿using SemPrace.Classes;
+﻿using SemPrace.Model;
 using SemPrace.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -37,6 +37,10 @@ namespace SemPrace.Model
         public void AddOsoba(OsobaViewModel osoba)
         {
             RegistrovaneOsoby.Add(osoba);
+        }
+        public override string ToString()
+        {
+            return Nazev + " " + Lokalita;
         }
     }
 }

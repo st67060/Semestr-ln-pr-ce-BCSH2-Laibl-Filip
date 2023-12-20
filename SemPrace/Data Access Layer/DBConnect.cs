@@ -28,7 +28,7 @@ namespace SemPrace
 
             return nacteneKnihovny;
         }
-        public void SaveDataToDatabase(ObservableCollection<Knihovna> knihovny)
+        public void SaveDataToDatabase(ObservableCollection<KnihovnaViewModel> knihovny)
         {
             SaveKnihovnyToDatabase(knihovny);
             SaveOsobyToDatabase(knihovny);
@@ -158,7 +158,7 @@ namespace SemPrace
             return knihy;
         }
 
-        public void SaveKnihovnyToDatabase(ObservableCollection<Knihovna> knihovny)
+        public void SaveKnihovnyToDatabase(ObservableCollection<KnihovnaViewModel> knihovny)
         {
             using (SQLiteConnection connection = new SQLiteConnection($"Data Source={databasePath};Version=3;"))
             {
@@ -200,7 +200,7 @@ namespace SemPrace
                 connection.Close();
             }
         }
-        public void SaveOsobyToDatabase(ObservableCollection<Knihovna> knihovny)
+        public void SaveOsobyToDatabase(ObservableCollection<KnihovnaViewModel> knihovny)
         {
             using (SQLiteConnection connection = new SQLiteConnection($"Data Source={databasePath};Version=3;"))
             {
@@ -246,7 +246,7 @@ namespace SemPrace
                 connection.Close();
             }
         }
-        public void SaveKnihyToDatabase(ObservableCollection<Knihovna> knihovny)
+        public void SaveKnihyToDatabase(ObservableCollection<KnihovnaViewModel> knihovny)
         {
             using (SQLiteConnection connection = new SQLiteConnection($"Data Source={databasePath};Version=3;"))
             {
@@ -318,7 +318,7 @@ namespace SemPrace
                 connection.Close();
             }
         }
-        public void SaveHistorieVypujcenychKnihToDatabase(ObservableCollection<Knihovna> knihovny)
+        public void SaveHistorieVypujcenychKnihToDatabase(ObservableCollection<KnihovnaViewModel> knihovny)
         {
             using (SQLiteConnection connection = new SQLiteConnection($"Data Source={databasePath};Version=3;"))
             {

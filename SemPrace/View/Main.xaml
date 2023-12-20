@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SemPrace.View"
         mc:Ignorable="d"
-          Title="MainWindow" Height="700" Width="1300" WindowStyle="None">
+          Title="MainWindow" Height="700" Width="1300" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Resources>
         <Style x:Key="KnihovnaButtonStyle" TargetType="Button">
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -35,7 +35,7 @@
             <Setter Property="FontFamily" Value="Segoe UI"/>
         </Style>
     </Window.Resources>
-    <Grid Background="White">
+    <Grid Background="White" MouseLeftButtonDown="Grid_MouseLeftButtonDown">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="700"/>
@@ -235,9 +235,6 @@
                 </Style>
             </ListView.ItemContainerStyle>
         </ListView>
-        <Image Source="/Assets/BooksIcon.png" Width="48" Height="48" Margin="400,65,478,587" />
-        <Image Source="/Assets/BranchIcon.png" Width="48" Height="48" Margin="88,65,790,587" />
-        <Image Source="/Assets/UsersIcon.png" Width="48" Height="48" Margin="774,65,104,587" />
         <Button x:Name="buttonPridatKnihovna" Style="{StaticResource KnihovnaButtonStyle}" Content="Přidat" Command="{Binding AddKnihovnaCommand}"  Margin="0,111,0,0"  Width="134" Grid.Column="1" Height="30" />
         <Separator HorizontalAlignment="Center" Margin="0,232,0,0" VerticalAlignment="Top" Height="24" Width="328" Grid.Column="1"/>
         <Label Content="Knihovna" HorizontalAlignment="Left" Margin="144,69,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="94" FontSize="14" FontWeight="Bold" FontFamily="Segoe UI"/>
@@ -255,7 +252,7 @@
         <Button x:Name="buttonUpravVyp" Content="Prodloužit Výpujčku" Style="{StaticResource KnihaButtonStyle}" Command="{Binding  EditBorrowCommand}" Margin="198,354,0,0"  Width="135"  Grid.Column="1" Height="30" />
         <Button x:Name="buttonOdeberVyp" Content="Odebrat Výpujčku" Style="{StaticResource KnihaButtonStyle}" Command="{Binding  RemoveBorrowCommand}" Margin="198,397,0,0"  Width="135"  Grid.Column="1" Height="30" />
         <Button x:Name="buttonZobrazVypKnihyOsoba" Content="Zobrazit vypůjčené Knihy"  Margin="191,553,0,0"  Style="{StaticResource OsobaButtonStyle}" Command="{Binding BorrowedBooksCommand}" Width="153" Height="30" Grid.Column="1" />
-        <ComboBox x:Name="comboBoxKniha" HorizontalAlignment="Left" Margin="534,644,0,0" VerticalAlignment="Top" Width="116" Height="20"  BorderThickness="0,0,0,0" FontFamily="Segoe UI">
+        <ComboBox x:Name="comboBoxKniha" HorizontalAlignment="Left" Margin="534,644,0,0" VerticalAlignment="Top" Width="116" Height="20"  BorderThickness="0,0,0,0" FontFamily="Segoe UI" SelectionChanged="comboBoxKniha_SelectionChanged">
             <ComboBoxItem Content="Výchozí" FontFamily="Segoe UI"/>
             <ComboBoxItem Content="Vypůjčené knihy"/>
             <ComboBoxItem Content="Nevypůjčené knihy"/>
@@ -263,13 +260,13 @@
             <ComboBoxItem Content="Autor"/>
             <ComboBoxItem Content="Rok Vydání"/>
         </ComboBox>
-        <ComboBox x:Name="comboBoxOsoba" HorizontalAlignment="Left" Margin="802,644,0,0" VerticalAlignment="Top" Width="114" Height="20"  BorderThickness="0,0,0,0">
+        <ComboBox x:Name="comboBoxOsoba" HorizontalAlignment="Left" Margin="802,644,0,0" VerticalAlignment="Top" Width="114" Height="20"  BorderThickness="0,0,0,0" SelectionChanged="comboBoxOsoba_SelectionChanged" >
             <ComboBoxItem Content="Výchozí"/>
             <ComboBoxItem Content="Jméno"/>
             <ComboBoxItem Content="Příjmení"/>
         </ComboBox>
-        <TextBox x:Name="HledatListViewKniha" Text="Hledat..." Foreground="Gray"  HorizontalAlignment="Left" Margin="219,644,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" Height="20" BorderThickness="0,0,0,0"  FontSize="14"/>
-        <TextBox x:Name="HledatListViewOsoba" Text="Hledat..." Foreground="Gray"  Margin="659,644,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" Height="20" BorderThickness="0,0,0,0"  FontSize="14"/>
+        <TextBox x:Name="HledatListViewKniha" Text="{Binding SearchKnihaText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"  HorizontalAlignment="Left" Margin="219,644,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="297" Height="20" BorderThickness="0,0,0,0"  FontSize="14" GotFocus="HledatListViewKniha_GotFocus" LostFocus="HledatListViewKniha_LostFocus" />
+        <TextBox x:Name="HledatListViewOsoba" Text="{Binding SearchOsobaText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="Gray"  Margin="659,644,139,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" BorderThickness="0,0,0,0"  FontSize="14" GotFocus="HledatListViewOsoba_GotFocus" LostFocus="HledatListViewOsoba_LostFocus" />
         <ToolBar HorizontalAlignment="Left" Height="31" VerticalAlignment="Top" Width="463" RenderTransformOrigin="0.518,0.551" Background="White">
             <Button x:Name="buttonGeneKnihovna" Content="Generovat Knihovnu" Width="144" VerticalAlignment="Top" Command="{Binding  GenerateKnihovnaCommand}" />
             <Button x:Name="buttonGeneKniha" Content="Generovat Knihu" Width="133" VerticalAlignment="Top" Command="{Binding  GenerateKnihaCommand}" />
@@ -280,6 +277,13 @@
         <Button Name="CloseButton" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="20" Command="{Binding  CloseCommand}" Grid.Row="0" Grid.Column="1" Margin="344,0,0,0" FontFamily="Tw Cen MT" Background="#FFE69A9A" BorderThickness="0,0,0,0" RenderTransformOrigin="0.567,0.6"/>
 
         <Separator HorizontalAlignment="Center" Margin="0,454,0,0" VerticalAlignment="Top" Height="24" Width="328" Grid.Column="1"/>
+        <Image Source="/Assets/BranchIcon.png" Margin="20,52,852,589" />
+        <Image Source="/Assets/BooksIcon.png" Margin="356,51,518,592" />
+        <Image Source="/Assets/UsersIcon.png" Margin="705,56,167,589" />
+        <Label Content="Vyberte Knihovnu pro editaci a zobrazení obsahu" HorizontalAlignment="Left" Margin="239,23,0,0" VerticalAlignment="Top" Width="484" FontSize="18" Foreground="#FF5D5D5D"/>
+        <Label Content="Knihovny" HorizontalAlignment="Left" Margin="91,64,0,0" VerticalAlignment="Top" Width="100" FontSize="16" FontWeight="Bold" Foreground="#FF5D5D5D"/>
+        <Label Content="Knihy" HorizontalAlignment="Center" Margin="0,66,0,0" VerticalAlignment="Top" Width="100" FontSize="16" FontWeight="Bold" Foreground="#FF5D5D5D"/>
+        <Label Content="Zákazníci" HorizontalAlignment="Left" Margin="774,68,0,0" VerticalAlignment="Top" Width="100" FontSize="16" FontWeight="Bold" Foreground="#FF5D5D5D"/>
 
     </Grid>
 

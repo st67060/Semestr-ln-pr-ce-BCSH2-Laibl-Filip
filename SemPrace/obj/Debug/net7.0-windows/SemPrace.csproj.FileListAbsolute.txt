@@ -86,23 +86,8 @@ C:\Users\ROG STRIX\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrac
 C:\Users\ROG STRIX\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\SemPrace.genruntimeconfig.cache
 C:\Users\ROG STRIX\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\ref\SemPrace.dll
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\SemPrace.csproj.AssemblyReference.cache
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogKnihaEdit.baml
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogKnihaPridat.baml
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogKnihovna.baml
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogKnihovnaEdit.baml
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogOsobaEdit.baml
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogOsobaPridat.baml
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\View\DialogKnihaAdd.baml
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\View\DialogKnihovnaAdd.baml
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogConfirm.g.cs
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogKnihaEdit.g.cs
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogKnihaPridat.g.cs
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogKnihovna.g.cs
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogKnihovnaEdit.g.cs
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogOsobaEdit.g.cs
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogOsobaListKnihy.g.cs
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogOsobaPridat.g.cs
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogVypujckaPridat.g.cs
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\View\DialogConfirm.g.cs
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\View\DialogKnihaAdd.g.cs
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\View\DialogKnihaEdit.g.cs
@@ -133,9 +118,6 @@ C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\bi
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\bin\Debug\net7.0-windows\runtimes\win-x86\native\SQLite.Interop.dll
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\bin\Debug\net7.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\bin\Debug\net7.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogConfirm.baml
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogOsobaListKnihy.baml
-C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\Dialog\DialogVypujckaPridat.baml
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\View\DialogConfirm.baml
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\View\DialogKnihaEdit.baml
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\SemPrace.g.resources
@@ -157,3 +139,7 @@ C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\ob
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\View\DialogKnihovnaEdit.baml
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\View\DialogOsobaAdd.baml
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\View\DialogOsobaEdit.baml
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\View\DialogOsobaKnihy.g.cs
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\View\DialogVypujckaAdd.g.cs
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\View\DialogOsobaKnihy.baml
+C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\obj\Debug\net7.0-windows\View\DialogVypujckaAdd.baml

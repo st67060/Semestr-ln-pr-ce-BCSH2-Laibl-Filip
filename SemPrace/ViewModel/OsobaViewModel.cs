@@ -105,5 +105,6 @@ namespace SemPrace.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        public string ToString() => osoba.ToString();
     }
 }

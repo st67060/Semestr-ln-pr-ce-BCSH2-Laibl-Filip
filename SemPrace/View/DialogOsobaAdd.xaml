@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SemPrace.View"
         mc:Ignorable="d"
-        Title="DialogOsobaAdd" Height="250" Width="300">
+        Title="DialogOsobaAdd" Height="250" Width="300" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
     <Grid x:Name="grid" Width="300" HorizontalAlignment="Center" Height="250" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

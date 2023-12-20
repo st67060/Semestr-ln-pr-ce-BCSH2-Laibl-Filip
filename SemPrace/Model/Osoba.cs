@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SemPrace.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -36,6 +37,10 @@ namespace SemPrace.Model
             string userId = new string(Enumerable.Repeat(chars, 6).Select(s => s[random.Next(s.Length)]).ToArray());
 
             return "User" + userId;
+        }
+        public override string ToString()
+        {
+            return Jmeno + " " + Prijmeni + " " + UzivatelskeCislo;
         }
     }
 }

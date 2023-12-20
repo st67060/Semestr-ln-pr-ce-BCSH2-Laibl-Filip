@@ -123,7 +123,7 @@ namespace SemPrace.ViewModel
             }
         }
 
-        public Osoba Vypujcil
+        public Osoba? Vypujcil
         {
             get => kniha.Vypujcil;
             set
@@ -167,7 +167,7 @@ namespace SemPrace.ViewModel
             kniha.DatumVypujceni = datumVypujceni;
             kniha.DatumNavraceni = datumNavraceni;
 
-            // osoba.HistorieVypujcenychKnih.Add(kniha);
+            osoba.HistorieVypujcenychKnih.Add(this.kniha);
 
             OnPropertyChanged(nameof(Vypujcil));
             OnPropertyChanged(nameof(DatumVypujceni));
@@ -215,5 +215,6 @@ namespace SemPrace.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        public string ToString() => kniha.ToString();
     }
 }

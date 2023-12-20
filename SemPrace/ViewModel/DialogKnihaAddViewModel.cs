@@ -1,4 +1,4 @@
-﻿using SemPrace.Classes;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,15 +71,15 @@ namespace SemPrace.ViewModel
 
         private bool CanConfirm()
         {
-            return !string.IsNullOrWhiteSpace(Nazev) && !string.IsNullOrWhiteSpace(Autor) && IsNumeric(RokVydani.ToString());
+            return !string.IsNullOrWhiteSpace(Nazev) && !string.IsNullOrWhiteSpace(Autor) && IsNumeric(RokVydani.ToString()) && RokVydani != null;
         }
 
-        private void Confirm()
+        private new void Confirm()
         {
             base.Confirm();
         }
 
-        private void Cancel()
+        private new void Cancel()
         {
             base.Cancel();
         }

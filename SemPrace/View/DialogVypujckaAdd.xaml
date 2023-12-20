@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SemPrace.View"
         mc:Ignorable="d"
-                Title="DialogVypujckaPridat" Height="559" Width="708">
+                Title="DialogVypujckaPridat" Height="559" Width="708" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
 
     <Grid x:Name="grid" Width="700" Height="500" HorizontalAlignment="Center" Margin="0,0,0,21" VerticalAlignment="Bottom">
 
-        <ListView x:Name="listViewOsoba" ItemsSource="{Binding Osoby}" SelectedItem="{Binding SelectedOsoba}" Width="280" Height="500" RenderTransformOrigin="0.136,0.495" Margin="10,0,410,0" SelectionChanged="listViewOsoba_SelectionChanged" Background="#FFC5C3C3" >
+        <ListView x:Name="listViewOsoba" ItemsSource="{Binding Osoby}" SelectedItem="{Binding SelectedOsoba}" Width="280" Height="500" RenderTransformOrigin="0.136,0.495" Margin="10,0,410,0" Background="#FFC5C3C3" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Přijmení" DisplayMemberBinding="{Binding Prijmeni}" Width="90"/>

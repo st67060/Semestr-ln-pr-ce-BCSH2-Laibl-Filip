@@ -1,4 +1,4 @@
-﻿using SemPrace.Classes;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +19,9 @@ namespace SemPrace.Model
         public DateOnly DatumNavraceni { get; set; }
         public Osoba Vypujcil { get; set; }
 
-        public Kniha(string nazev, string autor, int rokVydani)
+        public Kniha(string nazev,
+                     string autor,
+                     int rokVydani)
         {
             Nazev = nazev;
             Autor = autor;

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\laibl\OneDrive\Dokumenty\Semestr-ln-pr-ce-BCSH2-Laibl-Filip\SemPrace\App.xaml
-19-2094218536
+101872309384
 138592063
-46-1228072689
+34762953619
 204-368196081
-Dialog\DialogConfirm.xaml;Dialog\DialogKnihaEdit.xaml;Dialog\DialogKnihaPridat.xaml;Dialog\DialogKnihovna.xaml;Dialog\DialogKnihovnaEdit.xaml;Dialog\DialogOsobaEdit.xaml;Dialog\DialogOsobaListKnihy.xaml;Dialog\DialogOsobaPridat.xaml;Dialog\DialogVypujckaPridat.xaml;View\DialogConfirm.xaml;View\DialogKnihaAdd.xaml;View\DialogKnihaEdit.xaml;View\DialogKnihovnaAdd.xaml;View\DialogKnihovnaEdit.xaml;View\DialogOsobaAdd.xaml;View\DialogOsobaEdit.xaml;View\DialogOsobaKnihy.xaml;View\DialogVypujckaAdd.xaml;View\Main.xaml;
+View\DialogConfirm.xaml;View\DialogKnihaAdd.xaml;View\DialogKnihaEdit.xaml;View\DialogKnihovnaAdd.xaml;View\DialogKnihovnaEdit.xaml;View\DialogOsobaAdd.xaml;View\DialogOsobaEdit.xaml;View\DialogOsobaKnihy.xaml;View\DialogVypujckaAdd.xaml;View\Main.xaml;
 
-True
+False
 

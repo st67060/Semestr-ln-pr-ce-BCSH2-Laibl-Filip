@@ -7,33 +7,6 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Dialog\DialogConfirm.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Dialog\DialogKnihaEdit.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Dialog\DialogKnihaPridat.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Dialog\DialogKnihovna.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Dialog\DialogKnihovnaEdit.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Dialog\DialogOsobaEdit.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Dialog\DialogOsobaListKnihy.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Dialog\DialogOsobaPridat.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Dialog\DialogVypujckaPridat.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="View\DialogConfirm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -66,33 +39,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Dialog\DialogConfirm.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Dialog\DialogKnihaEdit.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Dialog\DialogKnihaPridat.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Dialog\DialogKnihovna.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Dialog\DialogKnihovnaEdit.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Dialog\DialogOsobaEdit.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Dialog\DialogOsobaListKnihy.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Dialog\DialogOsobaPridat.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Dialog\DialogVypujckaPridat.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="View\DialogConfirm.xaml">
       <SubType>Designer</SubType>
     </Page>

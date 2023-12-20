@@ -1,4 +1,4 @@
-﻿using SemPrace.Classes;
+﻿
 using SemPrace.ViewModel;
 using System.Windows.Input;
 
@@ -70,12 +70,12 @@ namespace SemPrace.ViewModel
             return !string.IsNullOrWhiteSpace(Nazev) && !string.IsNullOrWhiteSpace(Autor) && IsNumeric(RokVydani.ToString());
         }
 
-        private void Confirm()
+        private new void Confirm()
         {
             base.Confirm();
         }
 
-        private void Cancel()
+        private new void Cancel()
         {
             base.Cancel();
         }

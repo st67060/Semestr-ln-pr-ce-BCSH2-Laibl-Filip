@@ -1,4 +1,4 @@
-﻿using SemPrace.Dialog;
+﻿
 using SemPrace.Model;
 using SemPrace.Utility;
 using SemPrace.ViewModel;
@@ -25,7 +25,7 @@ namespace SemPrace.View
     public partial class Main : Window
     {
 
-
+        public event EventHandler<string> TextChangedEvent;
         public Main()
         {
             MainViewModel mainViewModel = new MainViewModel();
@@ -33,6 +33,61 @@ namespace SemPrace.View
             DataContext = mainViewModel;
             mainViewModel.RequestClose += (s, e) => this.Close();
             mainViewModel.RequestMinimize += (s, e) => this.WindowState = WindowState.Minimized; 
+        }
+        private void HledatListViewKniha_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (HledatListViewKniha.Text == "Hledat...")
+            {
+                HledatListViewKniha.Text = "";
+                HledatListViewKniha.Foreground = Brushes.Black;
+            }
+        }
+
+        private void HledatListViewKniha_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(HledatListViewKniha.Text))
+            {
+                HledatListViewKniha.Text = "Hledat...";
+                HledatListViewKniha.Foreground = Brushes.Gray;
+            }
+        }
+
+        private void HledatListViewOsoba_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (HledatListViewOsoba.Text == "Hledat...")
+            {
+                HledatListViewOsoba.Text = "";
+                HledatListViewOsoba.Foreground = Brushes.Black;
+            }
+        }
+
+        private void HledatListViewOsoba_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(HledatListViewOsoba.Text))
+            {
+                HledatListViewOsoba.Text = "Hledat...";
+                HledatListViewOsoba.Foreground = Brushes.Gray;
+            }
+        }
+        private void comboBoxKniha_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            string selectedItem = ((ComboBoxItem)comboBox.SelectedItem).Content.ToString();
+
+            (DataContext as MainViewModel)?.UpdateSortingKniha(selectedItem);
+        }
+
+        private void comboBoxOsoba_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            string selectedItem = ((ComboBoxItem)comboBox.SelectedItem).Content.ToString();
+
+            (DataContext as MainViewModel)?.UpdateSortingOsoba(selectedItem);
+        }
+
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
         }
     }
         

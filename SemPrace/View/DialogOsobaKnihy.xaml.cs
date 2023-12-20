@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SemPrace.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,14 @@ namespace SemPrace.View
     /// </summary>
     public partial class DialogOsobaKnihy : Window
     {
-        public DialogOsobaKnihy()
+        public DialogOsobaKnihy(DialogOsobaListKnihyViewModel viewModel)
         {
             InitializeComponent();
+            DataContext = viewModel;
+            viewModel.RequestDialogResult += (s, result) =>
+            {
+                DialogResult = result;
+            };
         }
     }
 }

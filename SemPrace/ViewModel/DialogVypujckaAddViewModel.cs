@@ -1,4 +1,4 @@
-﻿using SemPrace.Classes;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -73,12 +73,12 @@ namespace SemPrace.ViewModel
             return StartDate !=null && EndDate != null && SelectedOsoba !=null;
         }
 
-        private void Confirm()
+        private new void Confirm()
         {
             base.Confirm();
         }
 
-        private void Cancel()
+        private new void Cancel()
         {
             base.Cancel();
         }

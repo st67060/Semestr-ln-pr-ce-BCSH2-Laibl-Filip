@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SemPrace.View"
         mc:Ignorable="d"
-                Title="DialogOsobaListKnihy" Height="601" Width="480" WindowStyle="ToolWindow">
+                Title="DialogOsobaListKnihy" Height="601" Width="480" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
     <Grid Width="480" Height="600">
         <Grid.RowDefinitions>
             <RowDefinition Height="107*"/>

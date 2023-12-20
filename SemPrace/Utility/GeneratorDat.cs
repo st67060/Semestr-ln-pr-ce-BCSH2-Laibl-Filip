@@ -1,4 +1,6 @@
-﻿using SemPrace.Classes;
+﻿
+using SemPrace.Model;
+using SemPrace.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +21,7 @@ namespace SemPrace.Utility
             return BitConverter.ToInt32(bytes, 0);
         }
 
-        public Knihovna GenerateKnihovna()
+        public KnihovnaViewModel GenerateKnihovna()
         {
             string[] nazvy = {
         "Central", "Community", "City", "Public", "County",
@@ -47,10 +49,11 @@ namespace SemPrace.Utility
             knihovna.Id = GenerateUniqueId();
             knihovna.Nazev = nazev;
             knihovna.Lokalita = lokalita;
-            return knihovna;
+            KnihovnaViewModel viewModel = new KnihovnaViewModel(knihovna);
+            return viewModel;
 
         }
-        public Kniha GenerateKniha(Knihovna knihovna)
+        public KnihaViewModel GenerateKniha(Knihovna knihovna)
         {
             string[] nazvy = {
         "The Great Gatsby", "To Kill a Mockingbird", "1984", "Pride and Prejudice", "The Catcher in the Rye",
@@ -83,9 +86,10 @@ namespace SemPrace.Utility
             Kniha kniha = new Kniha(nazev, autor, random.Next(1800, 2023));
             kniha.IdKnihovna = knihovna.Id;
             kniha.Id = GenerateUniqueId();
-            return kniha;
+            KnihaViewModel viewModel = new KnihaViewModel(kniha);
+            return viewModel;
         }
-        public Osoba GenerateOsoba(Knihovna knihovna)
+        public OsobaViewModel GenerateOsoba(Knihovna knihovna)
         {
             string[] jmena = {
          "Jan", "Adam", "Petr", "Petr", "Martin",
@@ -117,25 +121,9 @@ namespace SemPrace.Utility
             Osoba osoba = new Osoba(Jmeno, prijm);
             osoba.Id = GenerateUniqueId();
             osoba.IdKnihovna = knihovna.Id;
-            return osoba;
+            OsobaViewModel viewModel = new OsobaViewModel(osoba);
+            return viewModel;
         }
-        public ObservableCollection<Knihovna> GenerateAll()
-        {
-            ObservableCollection<Knihovna> knihovny = new ObservableCollection<Knihovna>();
-            for (int i = 0; i < 10; i++)
-            {
-                knihovny.Add(GenerateKnihovna());
-            }
-            foreach (Knihovna knihovna in knihovny)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    knihovna.AddOsoba(GenerateOsoba(knihovna));
-                    knihovna.AddKniha(GenerateKniha(knihovna));
-
-                }
-            }
-            return knihovny;
-        }
+        
     }
 }
